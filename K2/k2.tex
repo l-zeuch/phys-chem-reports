@@ -1,0 +1,300 @@
+\section{Einleitung}
+Malachitgrün ist ein Triphenylmethan-Farbstoff, der in der Textilindustrie als Farbstoff und in der Mikrobiologie als biologischer Farbstoff verwendet wird.
+In wässriger Lösung reagiert Malachitgrün mit Wasser und Hydroxid-Ionen zu einer farblosen Carbinolbase.
+Die Geschwindigkeit dieser Reaktion hängt von der Konzentration der Hydroxid-Ionen ab.
+Ziel dieses Versuchs ist es, die Geschwindigkeitskonstanten der Reaktionen von Malachitgrün mit Wasser und Hydroxid-Ionen zu bestimmen.
+Hierzu wird die Reaktion spektrophotometrisch verfolgt.
+
+\section{Theorie}
+In wässriger Lösung reagiert das Kation des Malachitgrüns $A$ mit Hydroxid-Ionen zur entsprechenden Carbinolbase $B$.
+Bei entsprechend großer Konzentration liegt das Gleichgewicht auf der Seite der Carbinolbase, es gilt also
+\begin{reactions}
+    A + OH- &<=>>[ $k_1$ ] B
+\intertext{zusätzlich reagiert Malachitgrün mit Wasser}
+    A + H2O &<=>>[ $k_2$ ] B + H+
+\end{reactions}
+Hierbei seien $k_1$ und $k_2$ die Geschwindigkeitskonstanten der oben angeführten Reaktionen.
+
+Da in verdünnter Lösung gearbeitet wird, kann die Konzentration des Wassers konstant gesetzt und somit in $k_2$ einbezogen werden.
+Um die Konzentrationen der Hydroxid-Ionen ähnlich konstant halten zu können, wird der pH-Wert der Lösung größer 10 gehalten.
+Es folgt für den Zerfall des Malachitgrüns
+\begin{align}
+                - \odv{c}{t} &= k_1 c_{\ch{OH-}} \cdot c + k_2 c \nonumber \\
+                           k &= k_1 c_{\ch{OH-}} + k_2 \label{eqn:geschwindigkeitskonstanten} \\
+    \Rightarrow - \odv{c}{t} &= k c \nonumber
+\intertext{Integration dieses Geschwindigkeitsgesetzes liefert}
+           \ln \frac{c}{c_0} &= -k ( t - t_0 ) \nonumber \\
+\intertext{Für die Einheiten der Geschwindigkeitskonstanten gilt}
+                         [k] &= \unit{\per\second} \\
+                       [k_1] &= \unit{\liter\per\mol\per\second} \nonumber \\
+                       [k_2] &= \unit{\per\second} \nonumber
+\end{align}
+Die Solvolyse des Malachitgrüns wird spektrophotometrisch verfolgt, da die resultierende Carbinolbase farblos ist.
+Durch Anwenden des Lambert-Beerschen Gesetzes wird erhalten
+\begin{equation}
+    \ln \frac{E}{E_0} = - k( t - t_0 ) \label{eqn:absorption}
+\end{equation}
+Dies ist allerdings nur gültig, wenn $A$ und $B$ nicht bei der gleichen Wellenlänge absorbieren.
+Um das zu bestätigen, werden während der Reaktion etwa alle \qty{10}{\minute} Spektren aufgenommen.
+
+Der Punkt, an dem sich alle aufgenommenen Spektren kreuzen, wird \textbf{isosbestischer Punkt} genannt.
+Seine Existenz ist notwendig, um nachzuweisen, dass aus dem Ausgangsstoff $A$ nur ein Endprodukt $B$ entsteht.
+Würde $B$ zu $C$ weiterreagieren, oder $A$ in einer zeitgleichen Reaktion zu $C$ reagieren, so wird kein solcher Punkt ersichtlich.
+
+Anhand von \autoref{eqn:absorption} erhält man $k$ für eine bestimmte Hydroxid-Konzentration.
+Werden mehrere Konzentration gemessen und die gefundenen $k$ gegen die Konzentration aufgetragen, so lassen sich $k_1$ und $k_2$ nach \autoref{eqn:geschwindigkeitskonstanten} bestimmen.
+Dabei ist dann $k_1$ die Steigung der Ausgleichsgeraden und $k_2$ der y-Achsenabschnitt.
+
+\section{Durchführung}
+\subsection{Reagenzien}
+\begin{itemize}
+    \item \qty{3e-5}{\mol\per\liter} Malachitgrün in Wasser
+    \item vorgefertigte Pufferlösungen mit pH-Werten von \num{10.0}, \num{10.3}, \num{10.6}, \num{11.0}, und \num{11.3}
+\end{itemize}
+
+Es wurden \qty{2}{\milli\liter} einer Lösung von \qty{3e-5}{\mol\per\liter} Malachitgrün mit \qty{2}{\milli\liter} Wasser vermischt.
+Diese Lösung wurde in eine Quarzküvette gefüllt und die Extinktion mit einem Spektralphotometer aufgenommen.
+Die Raumtemperatur wurde gemessen.
+
+Es wurden weitere \qty{2}{\milli\liter} der Malachitgrün-Lösung mit \qty{2}{\milli\liter} einer Pufferlösung von pH = 10.5 vermischt.
+Die Probe wurde sofort nach dem Ansetzen vermessen, dann 5 Mal in Abständen von \qty{10}{\minute}.
+
+Das Photometer wurde auf die im ersten Versuchsabschnitt bestimmte Wellenlänge des längstwelligen Absorptionsmaximums von \qty{617}{\nano\meter} fest eingestellt.
+Es wurden \qty{2}{\milli\liter} der Malachitgrün-Lösung mit \qty{2}{\milli\liter} verschiedener Pufferlösungen mit pH-Werten von \num{10.0}, \num{10.3}, \num{10.6}, \num{11.0}, und \num{11.3} vermischt.
+Die Probe wurde sofort bei dieser Wellenlänge gemessen.
+Die pH-Werte der Pufferlösungen wurden mit einem pH-Meter überprüft.
+
+\section{Ergebnisse und Diskussion}
+Die Raumtemperatur während des Versuchs betrug \qty{21}{\degreeCelsius} (\qty{294.15}{\kelvin}).
+Die gemessenen pH-Werte der Pufferlösungen sind nachstehend in \autoref{tab:ph} dargestellt.
+
+Hierbei sei bereits an dieser Stelle angemerkt, dass die Abweichungen insbesondere bei höheren pH-Werten auf systematische Fehler der pH-Elektrode zurückzuführen sind.
+So musste, um einen stabilen Messwert zu erhalten, die Elektrode für längere Zeit in der Lösung belassen werden, was zu einer Verfälschung des Wertes führen kann.
+\begin{table}[H]
+    \centering
+    \caption{Gewünschte und gemessene pH-Werte der Pufferlösungen.}
+    \label{tab:ph}
+    \begin{tabular}{c c c}
+        \toprule
+        Gewünschter pH-Wert & Gemessener pH-Wert \\
+        \midrule
+        \num{10.0} & \num{10.073 +- 0.002} \\ \midrule
+        \num{10.3} & \num{10.332 +- 0.002} \\ \midrule
+        \num{10.6} & \num{10.513 +- 0.002} \\ \midrule
+        \num{11.0} & \num{10.775 +- 0.002} \\ \midrule
+        \num{11.3} & \num{10.747 +- 0.002} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Absorptionsmaximum und Extinktionskoeffizient}
+Das Absorptionsspektrum von Malachitgrün in Wasser ist in \autoref{fig:wasser} dargestellt.
+Das längstwelligste Absorptionsmaximum liegt bei \qty{617}{\nano\meter} mit einer Extinktion von \num{0.481}.
+Der zugehörige dekadische Extinktionskoeffizient $\varepsilon_{617}$ berechnet sich nach dem Lambert-Beerschen Gesetz zu
+\begin{align*}
+    E &= \varepsilon_{617} \cdot c \cdot d \\
+    \varepsilon_{617} &= \frac{E}{c \cdot d} \\
+    &= \frac{0.481}{\qty{1.5e-5}{\mol\per\liter} \cdot \qty{1}{\centi\meter}} \\
+    &= \qty{32066}{\liter\per\mol\per\centi\meter}
+\end{align*}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{K2/plots/Wasser.png}
+    \caption{
+        Absorptionsspektrum von Malachitgrün in Wasser im Bereich \qty{200}{\nano\meter} bis \qty{800}{\nano\meter}.
+        Das längstwelligste Absorptionsmaximum liegt bei \qty{617}{\nano\meter}.
+    }
+    \label{fig:wasser}
+\end{figure}
+
+\subsection{Bestimmung des isosbestischen Punktes}
+Der isosbestische Punkt ist dadurch ausgezeichnet, dass sich alle aufgenommenen Spektren während der Reaktion bei einer bestimmten Wellenlänge schneiden.
+In \autoref{fig:isosbestisch} sind zwei mögliche Kandidaten ersichtlich, nämlich bei \qty{279}{\nano\meter} und im Bereich von \qty{240}{\nano\meter} bis \qty{360}{\nano\meter}.
+Da sich letzterer Bereich allerdings nicht in einem einzigen Punkt schneidet, sondern sich die Schnittpunkte über einen Bereich erstrecken, und die Spektren sich nicht kreuzen, wird der isosbestische Punkt bei \qty{279}{\nano\meter} festgesetzt.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{K2/plots/isosbestisch.png}
+    \caption{
+        Absorptionsspektren der Probelösung während der Reaktion mit Hydroxid-Ionen bei pH = 10.5 im Bereich \qty{220}{\nano\meter} bis \qty{800}{\nano\meter}.
+        Die Spektren wurden in \qty{10}{\minute} Abständen aufgenommen.
+        Der isosbestische Punkt liegt bei \qty{279}{\nano\meter}.
+    }
+    \label{fig:isosbestisch}
+\end{figure}
+
+\subsection{Bestimmung der Geschwindigkeitskonstanten}
+Zur Bestimmung der Geschwindigkeitskonstanten wird \autoref{eqn:absorption} verwendet.
+$E_0$ ist hierbei die Extinktion zum Zeitpunkt $t_0 = 0$, also unmittelbar nach dem Ansetzen der Reaktion beziehungsweise dem Start der Messung.
+
+\begin{align*}
+    \ln \frac{E}{E_0} &= -k ( t - t_0 ) \tag{\ref{eqn:absorption} Wdh.} \\
+    t_0 &= 0 \\
+    \Rightarrow k &= - \frac{\ln \frac{E}{E_0}}{t}
+    \intertext{Für pH = 10.0 (10.073) ergibt sich somit}
+    k_{10.0} &= - \frac{\ln \frac{0.5716}{0.6264}}{\qty{300}{\second}} \\
+    &= \qty{3.05e-4}{\per\second}
+\end{align*}
+
+Interessant ist anzumerken, dass die Geschwindigkeitskonstante bei pH = 10.747 (11.3) größer ist als bei pH = 10.775 (11.0).
+Das entspricht in dieser Form nicht den Erwartungen, da mit steigender Hydroxid-Konzentration auch die Geschwindigkeitskonstante steigen sollte.
+Diese Abweichung ist vermutlich auf systematische Fehler der pH-Messung zurückzuführen, die bereits zuvor angesprochen wurden.
+Abgesehen davon zeigen die Daten in \autoref{tab:k} das erwartete Verhalten.
+
+\begin{table}[H]
+    \centering
+    \caption{Bestimmte Geschwindigkeitskonstanten $k$ bei verschiedenen pH-Werten.}
+    \label{tab:k}
+    \begin{tabular}{c c c c}
+        \toprule
+        pH & E & $E_0$ & $k$ [\unit{\per\second}] \\
+        \midrule
+        \num{10.073 +- 0.002} & \num{0.5716} & \num{0.6264} & \num{30.5 +- 2.5e-5} \\ \midrule
+        \num{10.332 +- 0.002} & \num{0.5419} & \num{0.6016} & \num{44.8 +- 2.5e-5} \\ \midrule
+        \num{10.513 +- 0.002} & \num{0.5548} & \num{0.6339} & \num{44.4 +- 2.5e-5} \\ \midrule
+        \num{10.747 +- 0.002} & \num{0.4958} & \num{0.5928} & \num{69.5 +- 2.5e-5} \\ \midrule
+        \num{10.775 +- 0.002} & \num{0.5245} & \num{0.6239} & \num{57.8 +- 2.5e-5} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Mittels einer linearen Regression nach \autoref{eqn:geschwindigkeitskonstanten} können nun $k_1$ und $k_2$ bestimmt werden.
+Die Auftragung ist dem Anhang zu entnehmen.
+$k_1$ entspricht hierbei der Steigung der Ausgleichsgeraden und $k_2$ dem y-Achsenabschnitt.
+Für $k_1$ wurde \qty{0.70 +- 0.17}{\liter\per\mol\per\second} und für $k_2$ \qty{21.0 +- 6.4e-5}{\per\second} bestimmt.
+
+Diese Werte liegen nahe am Literaturwert von \qty{1.267}{\liter\per\mol\per\second} für $k_1$ und \qty{25e-5}{\per\second} für $k_2$ \autocite{chen1959pressure} (bei \qty{20}{\degreeCelsius}).
+Die Abweichungen sind durch Temperaturunterschiede zur Literatur, sowie des anderen Experimentaufbaus erklärbar, da in diesem Versuch statt einer Natriumhydroxid-Lösung Pufferlösungen verwendet wurden.
+
+\section{Zusammenfassung}
+In diesem Versuch wurde die Solvolyse von Malachitgrün in wässriger Lösung untersucht.
+Das Absorptionsspektrum von Malachitgrün in Wasser wurde aufgenommen und das längstwelligste Absorptionsmaximum bei \qty{617}{\nano\meter} bestimmt.
+Der dekadische Extinktionskoeffizient $\varepsilon_{617}$ wurde zu \qty{32066}{\liter\per\mol\per\centi\meter} berechnet.
+Die Geschwindigkeitskonstanten $k$ bei verschiedenen pH-Werten wurden bestimmt und mittels linearer Regression $k_1$ und $k_2$ der Reaktionen mit Hydroxid-Ionen beziehungsweise Wasser bestimmt.
+
+\section{Zusatzfragen}
+\subsection{Bau eines UV-Spektralphotometers}
+Ein UV-Spektralphotometer besteht im Wesentlichen aus einer Lichtquelle, einem Monochromator, einer Küvette zur Probenaufnahme, und einem Detektor.
+Die Lichtquelle emittiert Licht im UV-Bereich, welches durch den Monochromator in seine spektralen Komponenten zerlegt wird.
+
+Durch Einstellen des Monochromators kann eine bestimmte Wellenlänge ausgewählt werden, die dann durch die Probe in der Küvette geleitet wird.
+Der Detektor misst die Intensität des durch die Probe hindurchtretenden Lichts.
+Anhand der gemessenen Intensität wird die Extinktion $E$ der Probe berechnet.
+Es gilt:
+\begin{equation*}
+    E = \log_{10} \left( \frac{I_0}{I} \right)
+\end{equation*}
+
+\subsection{Transmission, Absorption, und Extinktion}
+Die Transmission $T$ ist definiert als das Verhältnis der Intensität des durch die Probe hindurchtretenden Lichts $I$ zur Intensität des einfallenden Lichts $I_0$.
+Absorption $A$ ist der Prozess, bei dem Lichtenergie von Molekülen in der Probe aufgenommen wird.
+Die Extinktion $E$ ist ein Maß für die Abschwächung des Lichts durch die Probe und wird durch die Summe von Absorption und Streuung verursacht.
+
+Messtechnisch sind Absorption und Extinktion generell gleichwertig, da beide Größen die Abschwächung des Lichts beschreiben. sofern die Streuung vernachlässigbar ist.
+
+\subsection{Gültigkeitsbereich des Lambert-Beerschen Gesetzes}
+Das Lambert-Beersche Gesetz ist gültig unter bestimmten Bedingungen:
+\begin{itemize}
+    \item Die Lösung muss homogen und klar sein, ohne Partikel, die das Licht streuen könnten.
+    \item Die Konzentration der absorbierenden Spezies sollte nicht zu hoch sein, da bei hohen Konzentrationen Abweichungen auftreten können.
+    \item Das Licht sollte monochromatisch sein, also nur eine Wellenlänge besitzen.
+    \item Die Küvette sollte eine konstante Schichtdicke haben und aus einem Material bestehen, das im relevanten Wellenlängenbereich transparent ist.
+\end{itemize}
+
+\newpage
+\subsection{Isosbestische Punkte}
+Ein isosbestischer Punkt ist eine Wellenlänge, bei der die Absorptionsspektren verschiedener Spezies oder Zustände einer Substanz sich schneiden.
+Die Existenz eines isosbestischen Punktes deutet darauf hin, dass nur zwei Spezies oder Zustände in einem Gleichgewicht stehen.
+In diesem Fall bedeutet das, dass Malachitgrün nur zu einer einzigen Carbinolbase reagiert, ohne dass weitere Zwischenprodukte oder Nebenreaktionen auftreten.
+Die Anwesenheit eines isosbestischen Punktes lässt sich durch die Überlagerung der Absorptionsspektren der beiden Spezies erklären.
+
+\newpage
+\printbibliography
+\newpage
+\appendix
+
+\section{Fehlerrechnung}
+\subsection{Geschwindigkeitskonstanten}
+Die Unsicherheit der Geschwindigkeitskonstanten $k$ wird mittels Gaußscher Fehlerfortpflanzung berechnet.
+Hierbei wurde durch Betrachtung der Rohdaten der Zeitfehler auf \qty{0.05}{\second} geschätzt.
+\begin{align*}
+    k &= - \frac{\ln \frac{E}{E_0}}{t} \\
+    \Rightarrow \Delta k &= \sqrt{ \left( \pdv{k}{t} \Delta t \right)^2 } \\
+    \pdv{k}{t} &= \frac{\ln \frac{E}{E_0}}{t} \\
+    \Delta k &= \sqrt{ \left( \frac{\ln \frac{E}{E_0}}{t} \Delta t \right)^2 } \\
+    \intertext{Beispielhaft für pH = 10.513 (10.5):}
+    \Delta k_{10.5} &= \sqrt{ \left( \frac{\ln \frac{0.5716}{0.6264}}{\qty{300}{\second}} \cdot \qty{0.05}{\second} \right)^2 } \\
+    &\approx \qty{2.5e-5}{\per\second}
+\end{align*}
+Da die Unsicherheiten der einzelnen $k$ ungefähr um den gleichen Wert schwanken, wird dieser für alle $k$ als \qty{2.5e-5}{\per\second} angenommen.
+
+\subsubsection{Geschwindigkeitskonstanten $k_1$ und $k_2$}
+Die Unsicherheiten der Geschwindigkeitskonstanten $k_1$ und $k_2$ werden mittels linearer Regression auf Millimeterpapier bestimmt.
+Hierbei ist die Unsicherheit der Steigung (für $k_1$) beziehungsweise des y-Achsenabschnitts (für $k_2$) gegeben durch die halbe Spanne der Extremgeraden (CI = 68\%).
+\begin{align*}
+    \Delta k_1 &= \frac{m_{\text{max}} - m_{\text{min}}}{2} \\
+    &= \frac{\qty{0.867}{\liter\per\mol\per\second} - \qty{0.530}{\liter\per\mol\per\second}}{2} \\
+    &= \qty{0.169}{\liter\per\mol\per\second} \\
+    \Delta k_2 &= \frac{b_{\text{max}} - b_{\text{min}}}{2} \\
+    &= \left| \frac{\qty{1.4e-4}{\per\second} - \qty{2.675e-4}{\per\second}}{2} \right| \\
+    &= \qty{6.375e-5}{\per\second}
+\end{align*}
+
+\section{Kinetische Messungen}
+An dieser Stelle sind die für die Bestimmung der Geschwindigkeitskonstanten verwendeten Plots dargestellt.
+Alle Extinktionsmessungen wurden bei \qty{617}{\nano\meter} durchgeführt.
+Zur besseren Veranschaulichung des zeitlichen Verlaufs wurde das Signal zusätzlich mittels nachfolgender Funktion geglättet.
+\begin{minted}{python}
+def _denoise(absorbances: List[float], window_size: int = 11) -> List[float]:
+    """Simple moving average denoising."""
+    abs_array = np.asarray(absorbances)
+    kernel = np.ones(window_size) / window_size
+    denoised = np.convolve(abs_array, kernel, mode='same')
+    # remove first and last few points which are less reliable
+    denoised[:window_size//2] = abs_array[:window_size//2]
+    denoised[-(window_size//2):] = abs_array[-(window_size//2):]
+    return denoised.tolist()
+\end{minted}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{K2/plots/pH10_0.png}
+    \caption{
+        Aufnahme der Extinktion bei pH = 10.0 für $t = \qty{5}{\minute}$.
+    }
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{K2/plots/pH10_3.png}
+    \caption{
+        Aufnahme der Extinktion bei pH = 10.3 für $t = \qty{5}{\minute}$.
+    }
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{K2/plots/pH10_6.png}
+    \caption{
+        Aufnahme der Extinktion bei pH = 10.6 für $t = \qty{5}{\minute}$.
+    }
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{K2/plots/pH11_03.png}
+    \caption{
+        Aufnahme der Extinktion bei pH = 11.0 für $t = \qty{5}{\minute}$.
+    }
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{K2/plots/pH11_3.png}
+    \caption{
+        Aufnahme der Extinktion bei pH = 11.3 für $t = \qty{5}{\minute}$.
+    }
+\end{figure}
+
+\includepdf[pages=-,landscape=true]{K2/plots/geschwindigkeitskonstante.pdf}
