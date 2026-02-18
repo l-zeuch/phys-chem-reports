@@ -1,0 +1,229 @@
+\definesubmol\glucose{
+    HO-[2,0.5,2]?<[7,0.7](-[2,0.5]OH)-[,,,,line width=2pt]@{base}(-[6,0.5]OH)>[1,0.7](-[6,0.5]OH)-[3,0.7]O-[4]?(-[2,0.3]-[3,0.5]HO)
+}
+\definesubmol\fructose{
+    OH-[2,0.5]?[start]-[,,,,line width=2pt]@{base}(-[2,0.5,,2]HO)>[:60,0.7](-[6,0.5]-[7,0.5]OH)-[::90]O-[::60]?[start,{>},](-[2,0.3]-[3,0.5]HO)(-[6,0.5,,2]HO)
+}
+\definesubmol\saccharose{
+    HO-[2,0.5,2]?[glucose]<[7,0.7](-[2,0.5]OH)-[,,,,line width=2pt]@{base}(-[6,0.5]OH)>[1,0.7](
+        -[:-60,0.7]O-[::120,0.7]?[fructose](-[2,0.3]-[3,0.5]HO)<[:-60,0.6](-[6,0.5]OH)-[,,,,line width=2pt]@{base}(-[2,0.5,,2]HO)>[:60,0.6](-[6,0.5]-[7,0.5]OH)-[::90]O?[fructose]
+    )-[3,0.7]O-[4]?[glucose](-[2,0.3]-[3,0.5]HO)
+}
+
+\section{Einleitung}
+Die Säure-katalysierte Inversion von Saccharose zu Glucose und Fructose ist ein klassisches Modellsystem der Kinetik.
+Nach frühen quantitativen Studien\autocite{HarcourtEsson1866connexion} lieferte Svante Arrhenius 1889 den Durchbruch, indem er die logarithmische Temperaturabhängigkeit der Geschwindigkeitskonstante $k$ gegen 1/T zu einer linearen Beziehung verknüpfte und damit die Aktivierungsenergie als zentrale Kenngröße etablierte.
+Die Reaktion wurde seither vielfach genutzt, um Arrhenius-Parameter aus experimentellen Temperaturreihen abzuleiten.
+
+Mit den Arbeiten von van't Hoff und Arrhenius wurde die Inversion von Saccharose zu einem Prüfstein für die Gültigkeit und Präzision kinetischer Modelle, da die Reaktion sowohl polarimetrisch als auch refraktometrisch in Echtzeit verfolgt werden kann.
+Frühe Untersuchungen nutzten vor allem einfache starke Säuren als Katalysator, um unter streng isothermen Bedingungen Pseudoeinordnungskinetiken zu bestimmen.
+Diese historischen Studien sind bis heute methodisch bedeutsam, da sie die Grundlage für moderne Arrhenius-Auswertungen, die Bestimmung von Aktivierungsenergien und die Extrapolation von Halbwertszeiten bilden.
+
+Moderne Arbeiten erweitern diesen Ansatz: Inline-Analytik (Polarimetrie, ATR-FTIR, Raman) ermöglicht präzise Kinetikdaten auch bei hohen Zuckerkonzentrationen;
+Studien im subkritischen Wasser zeigen beschleunigte Inversion und Nebenreaktionen.\autocite{Oomori2004-td}
+Quantenchemische Rechnungen stützen die experimentellen Aktivierungsenergien und beleuchten Protonierungs- und Spaltungsschritte (vgl. PCP-Versuch zur Quantenchemie).
+Damit bleibt die Saccharose-Inversion ein Prüfstein, um klassische Arrhenius-Auswertungen auf neue Prozessbedingungen zu übertragen.
+
+Im vorliegenden Versuch werden Geschwindigkeitskonstanten $k$ bei mehreren Temperaturen polarimetrisch bestimmt, aus der Arrhenius-Auftragung die Aktivierungsenergie abgeleitet und darauf aufbauend Halbwertszeiten für weitere Temperaturen berechnet.
+
+\newpage
+\section{Theorie}
+Die Inversion von Rohrzucker (Saccharose) wird durch Protonen katalyisert.
+\begin{scheme}[H]
+    \centering
+    \schemestart[][west]
+       \chemfig[cram width=2pt,atom sep=2.5em,baseline=(base)]{!\saccharose}\arrow{0}[,0]\+ \ch{H2O} \arrow{->[\text{H+}]} \chemfig[cram width=2pt,baseline=(base),atom sep=2.5em]{!\glucose}\qquad \arrow{0}[,0]\+ \chemfig[cram width=2pt,atom sep=2.5em,baseline=(base)]{!\fructose}
+    \schemestop
+    \caption{Säurekatalysierte Inversion von Saccharose (S) zu Glucose (G) und Fructose (F).}
+\end{scheme}
+Da der eigentlichen Reaktion die Protonierung der Saccharose vorgelagert ist, deren Gleichgewicht sich zügig einstellt, gilt für die Gleichgewichtskonstante $K$
+\begin{equation}
+    K = \frac{c_{\ch{SH+}}}{c_{\ch{S}} \cdot c_{\ch{H+}}}\, \text{.}
+\end{equation}
+Aufgrund der Verdünnung der Reaktionslösung kann die Konzentration des Wassers als konstant angesehen werden.
+Ähnliches gilt für die Konzentration der Protonen, hier wegen derer katalytischen Wirkung.
+Somit können diese beiden Konzentrationen in die Geschwindigkeitskonstante $k$ mit einbezogen werden.
+Es folgt ein Geschwindigkeitsgesetz 1. Ordnung.
+\begin{align}
+    - \odv{c_{\ch{S}}}{t} &= k c_{\ch{S}}
+\intertext{Integration mit $t = t_0$ liefert}
+    \ln \frac{c_0}{c_{\ch{S}}} &= k (t - t_0)\, \text{.}
+\end{align}
+Zur Verfolgung der Reaktion wird die Änderung des Drehwinkels genutzt.
+Da die äquimolare Mischung aus Glucose und Fructose (Invertzucker) die Ebene des polarisierten Lichtes nach links (negativ) dreht, Saccharose dagegen nach rechts (positiv), wird der beobachtete Drehwinkel kleiner.
+Es gilt
+\begin{align}
+    \ln \frac{\alpha_0 - \alpha_{\infty}}{\alpha - \alpha_{\infty}} &= k (t - t_0) \label{eqn:log-alpha}
+\end{align}
+$\alpha_0$ ist hierbei der Drehwinkel zum Zeitpunkt $t_0$, $\alpha_{\infty}$ der Drehwinkel nach unendlich langer Reaktionszeit, und $\alpha$ der Drehwinkel zum Zeitpunkt $t$.
+Durch ein Auftragen des Logarithmus' gegen die Zeit lässt sich $k$ mittels einer Regression bestimmen.
+
+Nach Arrhenius gilt für die Aktivierungsenergie $E_A$
+\begin{align}
+    k &= A \cdot \exp{\frac{- E_A}{RT}}
+\intertext{beziehungsweise}
+    \ln k &= - \frac{E_A}{R} \frac{1}{T} + \ln A \Rightarrow E_A = -m \cdot R \label{eqn:arrhenius}
+\end{align}
+R sei hierbei die universelle Gaskonstante.
+Auftragen von $\ln k$ gegen $\frac{1}{T}$ liefert die Aktivierungsenergie aus der Steigung der Ausgleichsgeraden.
+$A$ lässt sich dann aus dem y-Achsenabschnitt berechnen.
+
+\section{Durchführung}
+Eine Rohrzuckerlösung (\qty{0.5}{\mol\per\liter}) und Salzsäure (\qty{2.0}{\mol\per\liter}) wurden unabhängig auf \qty{25}{\degreeCelsius} temperiert.
+Jeweils \qty{25}{\milli\liter} wurden in einem Becherglas vermischt, mit zeitgleichem Start einer Stoppuhr.
+Das Polarimeter wurde blasenfrei mit einer geeigneten Menge der Lösung befüllt und auf den Punkt minimaler Helligkeit eingestellt, sodass beide Feldhälften gleich hell erscheinen.
+
+Die Reaktion wurde insgesamt für \qty{20}{\minute} verfolgt.
+In den ersten \qty{10}{\minute} wurde der Drehwinkel etwa alle \qty{30}{\second} gemessen, in der zweiten Hälfte etwa alle \qty{60}{\second}.
+Die Messreihe wurde für \qty{29}{\degreeCelsius} und \qty{34}{\degreeCelsius} wiederholt.
+
+Um $\alpha_{\infty}$ zu erhalten, wurden \qty{25}{\milli\liter} der Messlösung \qty{20}{\minute} lang auf \qty{70}{\degreeCelsius} erhitzt und anschließend auf \qty{22}{\degreeCelsius} abgekühlt.
+Der Drehwinkel wurde gemessen.
+
+\section{Ergebnisse und Diskussion}
+
+$\alpha_{\infty}$ wurde bei \qty{22}{\degreeCelsius} zu \ang{3.65} gemessen.
+
+Die durch Geradenausgleich bestimmten Geschwindigkeitskonstanten $k$ sind nachstehend in \autoref{tab:geschwindigkeitskonstanten} gelistet.
+\begin{table}[H]
+    \centering
+    \caption{Berechnete $k$ der Reaktion bei verschiedenen Temperaturen $T$.}
+    \begin{tabular}{c c c}
+        \toprule
+        $T$ [\unit{\degreeCelsius}] & $k$ [\unit{\liter\per\mol\per\second}] & $\Delta k$ [\unit{\liter\per\mol\per\second}] \\ \midrule
+        22 & \num{0.0002} & \num{0.0000024} \\ \midrule
+        29 & \num{0.0006} & \num{0.000013} \\ \midrule
+        34 & \num{0.0008} & \num{0.0000076} \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:geschwindigkeitskonstanten}
+\end{table}
+
+Mit steigender Temperatur ist ein Anstieg der Geschwindigkeitskonstanten zu beobachten.
+Das entspricht den Erwartungen, da generell mit steigender Temperatur eine Reaktion schneller verläuft.
+Interessant ist die Verdreifachung beim Anheben der Temperatur von \qty{22}{\degreeCelsius} zu \qty{29}{\degreeCelsius};
+diese augenscheinliche Diskrepanz wird noch deutlicher, wenn der Arrhenius-Plot (\autoref{fig:arrhenius}) betrachtet wird.
+Aufgrund der Linearisierung wird deutlich, dass diese Messung möglicherweise von einem größeren, systematischen Fehler behaftet zu sein scheint.
+
+Diese Vermutung wird bei Vergleich dessen Auftragung in \autoref{fig:alpha-29c} zu den jeweils anderen bestätigt.
+So ist das Bestimmtheitsmaß $R^2$ für \qty{29}{\degreeCelsius} deutlich kleiner als für \qty{25}{\degreeCelsius} und \qty{34}{\degreeCelsius}, und dessen Fehler um eine Größenordnung größer.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{K1/arrhenius.png}
+    \caption{Arrhenius-Darstellung der ermittelten $k$ zur Bestimmung von $E_A$. $CI = \sigma$.
+    $y = -13193x - 3.12$, $R^2 = 0.91$.}
+    \label{fig:arrhenius}
+\end{figure}
+
+Anhand des Geradenausgleichs des Arrhenius-Plots wird nach \autoref{eqn:arrhenius} die Aktivierungsenergie $E_A$ bestimmt.
+\begin{align*}
+    \ln k &= - \frac{E_A}{R} \frac{1}{T} + \ln A \Rightarrow E_A = -m \cdot R \tag{\ref{eqn:arrhenius} Wdh.}  \\
+    m &= \qty{-13193 +- 4100}{\kelvin} \\
+    E_A &= -( \qty{-13193 +- 4100}{\kelvin}) \cdot R \\
+    E_A &= \qty{109 +- 34}{\kilo\joule\per\mol}
+\end{align*}
+Der Frequenzfaktor $A$ ist der y-Achsenabschnitt und beträgt \qty{312}{\liter\per\mol\per\second}.
+Der relative Fehler ist etwa 30\%, von daher ist ein Vergleich mit dem Literaturwert von \qty{107.529}{\kilo\joule\per\mol}\autocite{leininger1938inversion} nur gering aussagekräftig.
+Aufgrund dieser großen Diskrepanz zur Literatur wird der Literaturwert für weitere Berechnungen verwendet.
+
+Anhand der Aktivierungsenergie kann die Halbwertszeit der Reaktion für die Temperaturen \qty{0}{\degreeCelsius}, \qty{25}{\degreeCelsius}, \qty{50}{\degreeCelsius} und \qty{100}{\degreeCelsius} berechnet werden.
+Hierfür gilt der Zusammenhang
+\begin{align*}
+    t_{\frac{1}{2}} &= \ln \frac{2}{k} \\
+\intertext{mit}
+    k &= A \cdot \exp{- \frac{E_A}{RT}} \\
+\intertext{beispielhaft für $T = \qty{0}{\degreeCelsius}$}
+    k &= \qty{312}{\liter\per\mol\per\second} \cdot \exp{- \frac{\qty{107.529}{\kilo\joule\per\mol}}{R \cdot \qty{273.14}{\kelvin}}} \\
+    k &= \qty{8.53e-19}{\liter\per\mol\per\second} \\
+    t_{\frac{1}{2}} &= \ln \frac{2}{8.53e-19} \\
+    t_{\frac{1}{2}} &= \qty{42.3}{\second}
+\end{align*}
+Analog dazu für die anderen Temperaturen. $T$ muss hierbei als absolute Temperatur in Kelvin verwendet werden.
+Die berechneten Halbwertszeiten sind nachstehend in \autoref{tab:halbwertszeiten} gelistet.
+
+\begin{table}[H]
+    \centering
+    \caption{Anhand des Literaturwertes für $E_A$ berechnete Halbwertszeiten der Reaktion bei verschiedenen Temperaturen $T$.}
+    \begin{tabular}{c c c}
+        \toprule
+        $T$ [\unit{\kelvin}] & $k$ [\unit{\liter\per\mol\per\second}] & $t_{\frac{1}{2}}$ [\unit{\second}] \\ \midrule
+        \num{273.14} & \num{8.53e-19} & \num{42.3} \\ \midrule
+        \num{298.14} & \num{4.53e-17} & \num{38.3} \\ \midrule
+        \num{323.14} & \num{1.3e-15} & \num{35.0} \\ \midrule
+        \num{373.14} & \num{2.77e-14} & \num{29.6} \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:halbwertszeiten}
+\end{table}
+
+\section{Zusammenfassung}
+Die Inversion von Rohrzucker zu Glucose und Fructose wurde polarimetrisch bei verschiedenen Temperaturen verfolgt.
+Die Geschwindigkeitskonstanten $k$ wurden aus den Messdaten bestimmt und in einem Arrhenius-Plot aufgetragen, um die Aktivierungsenergie $E_A$ zu berechnen.
+Der bestimmte Wert von $E_A = \qty{109 +- 34}{\kilo\joule\per\mol}$ weicht aufgrund möglicher systematischer Fehler deutlich vom Literaturwert ab.
+Anhand des Literaturwertes für $E_A$ wurden Halbwertszeiten für verschiedene Temperaturen berechnet, die den erwarteten Trend zeigen: Mit steigender Temperatur verkürzt sich die Halbwertszeit der Reaktion.
+
+
+\section{Zusatzfragen}
+\subsection{Inversionsreaktion}
+Der Name bezieht sich auf die Änderung der optischen Drehrichtung während der Reaktion.
+Saccharose ist stark rechtsdrehend (+).
+Das Produktgemisch (Invertzucker) ist jedoch linksdrehend (-), weil die Linksdrehung der Fructose betragsmäßig größer ist als die Rechtsdrehung der Glucose.
+Das Vorzeichen des Drehwinkels kehrt sich also um (\enquote{invertiert}).
+
+\subsection{Optische Aktivität}
+Optische Aktivität tritt bei Molekülen auf, die chiral sind.
+Das bedeutet, sie besitzen mindestens ein asymmetrisches Kohlenstoffatom (Stereozentrum) und lassen sich nicht mit ihrem Spiegelbild zur Deckung bringen. 
+Diese Moleküle interagieren mit linear polarisiertem Licht und drehen dessen Schwingungsebene.
+
+\subsection{Messung von Drehwinkeln}
+Das Messen von Drehwinkeln (Polarimetrie) spielt eine zentrale Rolle bei der Untersuchung von chemischen Reaktionen, insbesondere wenn chirale Substanzen beteiligt sind. 
+In diesem Versuch zur Rohrzuckerinversion wird dies deutlich, da die Konzentrationsänderung direkt mit der optischen Drehung korreliert ist.
+
+
+\subsection{Funktionsweise Polarimeter}
+Ein Polarimeter misst, um wie viele Grad die Schwingungsebene von linear polarisiertem Licht durch eine optisch aktive Substanz (z.B. Zuckerlösung) gedreht wird.
+Die optisch aktive Substanz enthält chirale Moleküle, die die Ebene von linear polarisiertem Licht um einen Winkel $\alpha$ drehen (optische Drehung).
+Der Drehwinkel hängt u.a. von Konzentration der Lösung, Weglänge der Messröhre, Wellenlänge des Lichts und der Temperatur ab. 
+
+Zuerst wird ohne Probe eingestellt, dass Polarisator und Analysator \enquote{gekreuzt} sind, das Gesichtsfeld also möglichst dunkel ist.
+Dann wird die Probenröhre eingesetzt; die Lösung dreht die Polarisationsebene und das Gesichtsfeld hellt sich wieder auf. 
+Der Analysator wird so weit verdreht, bis erneut ein Helligkeitsminimum erreicht ist; der dazugehörige Winkel ist der gemessene Drehwinkel $\alpha$. 
+
+
+\subsection{Systematische Fehler bei der Messung des Drehwinkels}
+Nullpunktfehler: Wenn das Polarimeter nicht korrekt genullt wurde12, verschieben sich alle $\alpha$-Werte. Da in der Formel jedoch Differenzen ($\alpha - \alpha_\infty$) stehen, kürzen sich konstante Nullpunktfehler oft heraus.
+
+Temperaturfehler: Eine ungenaue Temperierung ist kritisch, da $k$ exponentiell von $T$ abhängt.
+Ein systematischer Fehler bei $T$ führt zu einer falschen Steigung im Arrhenius-Plot und damit zu einem falschen Wert für die Aktivierungsenergie $E_A$.
+
+Ungenaues $\alpha_\infty$: Ein Fehler beim Endwert verfälscht die gesamte Berechnung von $k$ für die jeweilige Temperatur. 
+
+
+\newpage
+\printbibliography
+\newpage
+\appendix
+
+\section{Grafische Auftragungen}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{K1/25c.png}
+    \caption{Grafische Auftragung des Verlaufs von $\alpha$ unter Anwendung der \autoref{eqn:log-alpha} bei $T = \qty{25}{\degreeCelsius}$. $CI = \sigma$.
+    $y = 0.0002x + 0.0100$, $R^2 = 0.9972$.}
+    \label{fig:alpha-25c}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{K1/29c.png}
+    \caption{Grafische Auftragung des Verlaufs von $\alpha$ unter Anwendung der \autoref{eqn:log-alpha} bei $T = \qty{29}{\degreeCelsius}$. $CI = \sigma$.
+    $y = 0.0006x$, $R^2 = 0.9911$.}
+    \label{fig:alpha-29c}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{K1/34c.png}
+    \caption{Grafische Auftragung des Verlaufs von $\alpha$ unter Anwendung der \autoref{eqn:log-alpha} bei $T = \qty{34}{\degreeCelsius}$. $CI = \sigma$.
+    $y = 0.0008x$, $R^2 = 0.9983$.}
+    \label{fig:alpha-34c}
+\end{figure}
