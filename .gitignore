@@ -1,0 +1,3 @@
+.latexmk/
+.venv/
+_minted/
