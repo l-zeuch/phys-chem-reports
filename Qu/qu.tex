@@ -1,0 +1,213 @@
+\section{Theorie}
+
+In diesem Versuch wird der Mechanismus und Ablauf einer nukleophilen Substitution zwischen Brommethan und Chlorid simuliert.
+Das Ergebnis dieser Rechnung wird weiterverwendet, um eine Geometrieoptimierung und Frequenzanalyse der Edukte und Produkte durchzuführen.
+Es wird nach einem Übergangszustand gesucht, der mittels dem Ergebnis der Frequenzanalyse bestätigt wird.
+Die Berechnung wird mit den STO-3G und cc-pVDZ Basissätzen im Hartree-Fock Verfahren durchgeführt.
+Die Ergebnisse der zwei Berechnungen werden miteinander verglichen und bewertet.
+
+\subsection{Potentialhyperfläche}
+
+Wird vom Potential des harmonischen Oszillators ausgegangen, so beschreibt eben dieses Potential die Energie zweier Atome $A, B$ für alle Abstände $R_{AB}$ in einer Dimension.
+Nun ist intuitiv klar, dass dieses Bild nicht der Realität entspricht, da der Ort eines jeden Atoms über \textit{drei} Raumdimensionen beschrieben wird, also $3N$ Freiheitsgrade.
+Da die Atome in einem Molekül miteinander verknüpft sind, macht es keinen Unterschied, ob die Atome nun an $x, y, z$ oder $x + n, y + n, z + n$ anzufinden sind.
+Somit reduzieren sich die Freiheitsgrade zu $3N - 3$.
+
+In zweiter Instanz macht die Gesamtdrehung des Moleküls um $x, y, z$ ebenfalls keinen Unterschied für die relative Anordnung der Atome.
+Es reduzieren sich die Freiheitsgrade also zu $3N - 6$,  beziehungsweise zu $3N - 5$ für lineare Moleküle, da hier die Drehung um die Molekülachse nicht messbar ist.
+Stattdessen können sich lineare Moleküle biegen, um sogar gegebenenfalls eine neue, günstigere Konformation einzunehmen.
+Dieser Freiheitsgrad wirkt sich offensichtlich auf die relative Anordnung der Atome aus und wird durch $3N - 5$ berücksichtigt.
+
+Um all diese Freiheitsgrade mathematisch zu erfassen muss das Potential in $3N - 5$ Dimensionen beschrieben werden.
+Es wird eine im $3N - 6$-dimensionalem Raum gekrümmte Fläche erhalten.
+Diese Fläche wird Potentialhyperfläche genannt.
+
+\subsection{Geometrieoptimierung}
+
+In einer quantenchemischen Rechnung ist es das Ziel, eine stabile, energetisch günstige Molekülstruktur zu finden.
+Diese ist durch ein idealerweise globales Minimum auf der Potentialhyperfläche beschrieben, allerdings findet sich häufiger ein lokales Minimum.
+In einer Geometrieoptimierung werden hierfür die partiellen Ableitungen der Hyperfläche nach den Koordinaten berechnet.
+Anhand diesen Ableitungen kann erkannt werden, wie einzelne $R$ verändert werden müssen, um einer stabilen Struktur näher zu kommen.
+
+\subsection{Frequenzanalyse}
+
+Werden zusätzlich die zweiten Ableitungen des Potentials $V$ nach den  Koordinaten $R$ berechnet --- die ohnehin notwendig sind um Minima eindeutig zu bestimmen --- so können die Eigenschwingungen $\nu$ des Moleküls identifiziert werden.
+Da in unmittelbarer Nähe des Minimums das Hooke'sche Gesetz gilt, ist der Zusammenhang in einer Dimension recht trivial. 
+In mehreren Dimensionen (also einer \enquote{echten} Berechnung) handelt es sich um ein Eigenwertproblem, was quantenchemische Programme lösen können.
+\begin{align}
+    \nu = \sqrt{k\mu} \,,\, k = \odv[order=2]{V}{R}
+\end{align}
+
+Sind \textit{alle} zweiten Ableitungen positiv, wurde also ein Minimum gefunden, so sind auch die resultierenden Frequenzen reell.
+Ist dagegen genau eine zweite Ableitung negativ, entspricht der gefundene Punkt einem Übergangszustand; die Frequenz wird imaginär.
+Hieraus lassen sich sogar gezielt Übergangszustände des Moleküls finden, indem zunächst solch eine imaginäre Eigenschwingung identifiziert wird und alle anderen Koordinaten daraufhin optimiert werden.
+Diese Verfahren werden als Frequenzanalyse bezeichnet.
+
+\subsection{Born-Oppenheimer Näherung}
+
+Quantenchemische Berechnungen basieren auf der Schrödinger-Gleichung (SG).
+Diese ist für Systeme mit mehreren Elektronen und Atomkernen nicht mehr analytisch zu lösen, muss also iterativ genähert werden.
+Aus Sicht der Elektronen erscheinen Atomkerne an festen Orten, da erstere um ein Vielfaches schneller und leichter sind,
+wodurch für eine Lösung der SG die Atomkerne als fixe Punkte betrachtet werden können, was die Berechnungen vereinfacht.
+
+\subsection{Hartree-Fock}
+
+Die Wellenfunktionen der Elektronen in einem Molekül folgen aus der Lösung der Schrödinger-Gleichung des Systems.
+Da diese --- wie oben beschrieben --- für Mehrelektronensysteme nur numerisch lösbar ist, muss genähert werden.
+Hierzu wird die \textit{Orbitalnäherung} verwendet, womit die Gesamtwellenfunktion als Produkt der einzelnen Wellenfunktionen beschrieben wird.
+Damit die Wellenfunktion antisymmetrisch bei Vertauschung zweier Elektronen ist, wird diese durch eine \textit{Slater-Determinante} ausgedrückt.
+
+Das Hartree-Fock-Verfahren basiert nun auf der Beschreibung solch einer Wellenfunktion in Kombination mit dem Variationstheorem, welches besagt, dass der Energie-Erwartungswert einer genäherten Wellenfunktion stets größer oder gleich der tatsächlichen Energie ist.
+Als Variationsansatz in Hartree-Fock werden nun die einzelnen Orbitale so lange verändert, bis ein Minimum gefunden wird.
+
+Die einzelnen Rechenschritte liefern Eigenwertprobleme, die es zu lösen gilt.
+Die Lösung liefert neue MO-Koeffizienten, die nun für die nächste Iteration verwendet werden, so lange, bis sich die Energie nicht weiter verändert.
+Quantenchemische Programme führen diese iterative Rechnung nach gegebenen Parametern aus.
+
+\section{Durchführung}
+
+Zur Berechnung wurde das Quantenchemie-Programm \textit{Gaussian 16}\autocite{g16} verwendet, gekoppelt mit \textit{GaussView}\autocite{gv6} zur Bedienung.
+Zu Beginn des Versuches wurde die C-Cl-Bindungslänge als Scankoordinate gewählt, im Intervall von \qty{1.5}{\angstrom} und \qty{3.0}{\angstrom} mit einer Schrittweite von \qty{0.1}{\angstrom}.
+Für die Berechnung wurde zunächst der STO-3G Basissatz verwendet.
+Aus dem Ergebnis der Scanrechnung wurde in \textit{GaussView} der Zustand angewählt, der die niedrigste Energie aufwies.
+Ausgehend von diesem lokalen Minimum wurde eine Geometrieoptimierung und Frequenzanalyse durchgeführt.
+Das Ergebnis der Frequenzanalyse wurde weiterverwendet, um eine abschließende Übergangszustandsuche durchzuführen.
+Hierzu wurde der Zustand angewählt, der die höchste Energiedifferenz zwischen Edukten und Produkten und genau eine imaginäre Eigenfrequenz aufwies.
+
+Der Versuch wurde mit dem cc-pVDZ Basissatz wiederholt.
+
+\newpage
+
+\section{Ergebnisse und Diskussion}
+
+\subsection{Scanrechnung}
+
+Die Scanrechnungen ergaben die in \autoref{plot-energs} dargestellten Verläufe.
+Es ist gut zu erkennen, dass der größere cc-pVDZ Basisatz die Gesamtenergie der Produkte deutlich niedriger als die Edukte berechnet,
+wobei der STO-3G Basisatz die Gesamtenergie der Produkte sogar über die Gesamtenergie der Edukte berechnet hat.
+Ferner ist die Energiedifferenz zwischen Übergangszustand und Produkten im cc-pVDZ ausgeprägter als im STO-3G.
+Insgesamt sind alle Energien im cc-pVDZ niedriger als bei STO-3G.
+
+Diese Unterschiede zeigen deutlich die größere Präzision des cc-pVDZ Basissatzes gegenüber STO-3G.
+Während STO-3G nur drei Gauß-Orbitale zur Annäherung verwendet, verwendet cc-pVDZ zusätzlich Polarisationsfunktionen\autocite{dunning-basis-set},
+was aufgrund der verbesserten angularen Flexibilität die Absenkung der Orbitalenergien unterstützt.\autocite{thc2}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.95\textwidth}
+        \includegraphics[width=\textwidth]{Qu/Plot_Energie_STO-3G.png}
+        \caption{STO-3G}
+        \label{plot-sto3g}
+    \end{subfigure}
+    \begin{subfigure}{0.95\textwidth}
+        \includegraphics[width=\textwidth]{Qu/Plot_Energie_cc-pVDZ.png}
+        \caption{cc-pVDZ}
+        \label{plot-ccpVDZ}
+    \end{subfigure}
+    \caption{Auftragungen der berechneten Gesamtenergie entlang der Bindungslänge im Intervall $I$ = (\qty{1.5}{\angstrom}, \qty{3.0}{\angstrom}).
+        Schrittweite \qty{0.1}{\angstrom}.
+        Verwendete Basissätze STO-3G (\autoref{plot-sto3g}) und cc-pVDZ (\autoref{plot-ccpVDZ}).
+    }
+    \label{plot-energs}
+\end{figure}
+
+\subsection{Reaktionsenthalpie}
+
+Die Reaktionsenthalpie $\Delta_r H^0$ berechnet sich nach \cite{gaussian-thermochem} aus der Differenz der \textit{Sum of electronic and thermal Enthalpies} der Produkte und Edukte.
+\begin{align*}
+              \Delta_r H^0(298.15\, \text{\unit{\kelvin}}) &= \sum (\mathcal{E}_0 + H_{corr})_{\text{Produkte}} - \sum (\mathcal{E}_0 + H_{corr})_{\text{Edukte}} \\
+     \Delta_r H^0_{\text{STO-3G}} &= (- 3038.2206 - (- 3038.2556))\, \text{E\textsubscript{h}} \\
+                           &=  0.0350\, \text{E\textsubscript{h}} \\
+                           &= 91.89\, \text{\unit{\kilo\joule\per\mole}} \\
+    \Delta_r H^0_{\text{cc-pVDZ}} &= (- 3071.5283 - (- 3071.5161))\, \text{E\textsubscript{h}} \\
+                           &= - 0.0077\, \text{E\textsubscript{h}} \\
+                           &= - 20.23\, \text{\unit{\kilo\joule\per\mole}}
+\end{align*}
+Anhand der Literaturwerte $\Delta H_f^0$ für Chlormethan (\qty{- 81.9}{\kilo\joule\per\mole})\autocite{crc:std-thermo:ch3cl+ch3br}, Brommethan (\qty{- 35.4}{\kilo\joule\per\mole})\autocite{crc:std-thermo:ch3cl+ch3br},
+Chlorid (\qty{- 233.9}{\kilo\joule\per\mole})\autocite{nist-thermochem}, und Bromid (\qty{-219.0}{\kilo\joule\per\mole})\autocite{nist-thermochem}
+berechnet sich die Reaktionsenthalpie zu \qty{- 30.7}{\kilo\joule\per\mole}.
+
+\subsection{Reaktionsentropie}
+
+Die Reaktionsentropie $\Delta S_0^R$ berechnet sich aus der Summe der einzelnen Gesamtentropien $S_{0i}$ multipliziert mit dem entsprechenden stöchiometrischen Faktor $\nu_i$.
+\begin{align*}
+              \Delta S_0^R &= \sum_i \nu_i S_{0i} \\
+    \Delta S_{0, \text{STO-3G}}^R &= (70.293 - 68.037) \, \text{\unit{\cal\per\mole\per\kelvin}} \\
+                           &= 2.256 \, \text{\unit{\cal\per\mole\kelvin}} = 9.4391 \, \text{\unit{\joule\per\mole\per\kelvin}} \\
+   \Delta S_{0, \text{cc-pVDZ}}^R &= (79.057 - 76.443) \, \text{\unit{\cal\per\mole\per\kelvin}} \\
+                           &= 2.614 \, \text{\unit{\cal\per\mole\per\kelvin}} = 10.937 \, \text{\unit{\joule\per\mole\per\kelvin}}
+\end{align*}
+Anhand der Literaturwerte $S_0$ für Chlormethan (\qty{234.6}{\joule\per\mole\per\kelvin})\autocite{crc:std-thermo:ch3cl+ch3br}, Brommethan (\qty{246.4}{\joule\per\mole\per\kelvin})\autocite{crc:std-thermo:ch3cl+ch3br},
+Chlorid (\qty{153.4}{\joule\per\mole\per\kelvin})\autocite{nist-thermochem}, und Bromid (\qty{163.5}{\joule\per\mole\per\kelvin})\autocite{nist-thermochem}
+berechnet sich die Reaktionsentropie zu \qty{-1.7}{\joule\per\mole\per\kelvin}.
+
+\subsection{Freie Reaktionsenthalpie}
+
+Analog berechnet sich die freie Reaktionsenthalpie $\Delta_r G^0$ aus der Differenz der \textit{Sum of electronic and thermal Free Energies} der Produkte und Edukte.
+\begin{align*}
+    \Delta_r G^0(298.15\, \text{\unit{\kelvin}}) &= \sum (\mathcal{E}_0 + G_{corr})_{\text{Produkte}} - \sum (\mathcal{E}_0 + G_{corr})_{\text{Edukte}} \\
+     \Delta_r G^0_{\text{STO-3G}} &= (- 3038.2578 - (- 3038.2879))\, \text{E\textsubscript{h}} \\
+                           &=  0.0301\, \text{E\textsubscript{h}} \\
+                           &= 79.03\, \text{\unit{\kilo\joule\per\mole}} \\
+    \Delta_r G^0_{\text{cc-pVDZ}} &= (- 3071.5659 - (- 3071.5525))\, \text{E\textsubscript{h}} \\
+                           &= - 0.0134\, \text{E\textsubscript{h}} \\
+                           &= - 35.18\, \text{\unit{\kilo\joule\per\mole}}
+\end{align*}
+Über die Gibbs-Helmholtz-Gleichung wird die freie Reaktionsenthalpie folgendermaßen berechnet.
+\begin{align*}
+    \Delta G &= \Delta H - T \cdot \Delta S \\
+             &= -30.7\, \text{\unit{\kilo\joule\per\mole}} - 298.15\, \text{\unit{\kelvin}} \cdot (-1.7\, \text{\unit{\joule\per\mole\per\kelvin}}) \\
+             &= -30.65\, \text{\unit{\kilo\joule\per\mole}}
+\end{align*}
+
+Die Überschätzungen der Enthalpien und der Entropie sind insbesondere bei STO-3G auf die recht ungenaue Näherung der Orbitale zurückzuführen.
+Der cc-pVDZ Basisatz weist eine deutlich kleinere Abweichung auf; diese Abweichung ist höchstwahrscheinlich darauf zurückzuführen, dass für Atome der dritten Periode und darüber hinaus
+größere Basissätze (zum Beispiel cc-pV(D+d)Z) notwendig sind.\autocite{al-ar:large-basis}
+
+Für noch größere Atome kann es unter Umständen sogar nötig sein, Pseudopotential-Basissätze (cc-pVDZ-PP) oder auch re\-la\-ti\-vis\-tisch-kontrahierte Douglas-Kroll-Basissätze (cc-pVDZ-DK) zu verwenden.\autocite{ga-kr:bigger-basis}
+Ochterski suggeriert zudem in seiner Anleitung zur Thermochemie in \textit{Gaussian}, dass für alle einzelnen Edukte und Produkte die Geometrieoptimierung durchzuführen sei\autocite{gaussian-thermochem},
+was in diesem Versuch nicht der Fall war.
+
+\subsection{Gleichgewichtskonstante}
+
+Die Gleichgewichtskonstante $K$ berechnet sich aus $\Delta_r G^0$ wie folgt. $R$ ist die universelle Gaskonstante.
+\begin{align*}
+                    K &= \exp\left(- \frac{\Delta_r G^0}{RT} \right) \\
+    K_{\text{STO-3G}} &= \exp\left(- \frac{79.3\, \text{\unit{\kilo\joule\per\mole}}}{R \cdot 298.15\, \text{\unit{\kelvin}}} \right) \\
+                      &= 1.032 \\
+   K_{\text{cc-pVDZ}} &= \exp\left(- \frac{-35.18\, \text{\unit{\kilo\joule\per\mole}}}{R \cdot 298.15\, \text{\unit{\kelvin}}} \right) \\
+                      &= 0.985
+\end{align*}
+
+\subsection{Übergangszustand}
+
+Die Symmetriegruppe des Übergangszustandes wurde bestimmt zu $C_1$.
+Dies entspricht nicht der Erwartung von $C_3$, da im Übergangszustand der Tetraeder umschwingt und durch die drei Wasserstoff-Atome eine dreizählige Drehachse mit Cl-C-Br auf dieser Achse darstellt.
+
+\begin{align*}
+    \Delta G^{\ddagger} &= \sum (\mathcal{E}_0 + H_{corr})_{\text{TS}} - \sum (\mathcal{E}_0 + H_{corr})_{\text{Edukte}} \\
+    \Delta G^{\ddagger}_{\text{STO-3G}} &= (- 3028.2434 - (- 3038.2879))\, \text{E\textsubscript{h}} \\
+                                        &= 0.0445\, \text{E\textsubscript{h}} = 116.83\, \text{\unit{\kilo\joule\per\mole}} \\
+   \Delta G^{\ddagger}_{\text{cc-pVDZ}} &= (- 3071.5391 - (- 3071.5524))\, \text{E\textsubscript{h}} \\
+                                        &= 0.0133\, \text{\textsubscript{h}} = 34.92\, \text{\unit{\kilo\joule\per\mole}} \\
+                               \Delta S_0^R &= \sum_i \nu_i S_{0i} \\
+    \Delta S_{0,\text{STO-3G}}^{R,\ddagger} &= (70.353 - 78.215) \text{\unit{\cal\per\mole\per\kelvin}} \\
+                                            &= - 7.862\, \text{\unit{\cal\per\mole\per\kelvin}} = - 32.895\, \text{\unit{\joule\per\mole\per\kelvin}} \\
+    \Delta S_{0,\text{STO-3G}}^{R,\ddagger} &= (73.322 - 79.057) \text{\unit{\cal\per\mole\per\kelvin}} \\
+                                            &= - 5.737\, \text{\unit{\cal\per\mole\per\kelvin}} = - 24.003\, \text{\unit{\joule\per\mole\per\kelvin}} \\          
+\end{align*}
+
+\newpage
+
+\section{Zusammenfassung}
+
+Die nukleophile Substitution zwischen Brommethan und Chlorid wurde simuliert.
+Hierzu wurde die Potentialhyperfläche entlang der C-Cl-Bindungslänge berechnet.
+Anhand der Scanrechnung wurden Geometrieoptimierungen und Frequenzanalysen der Edukte, Produkte und Übergangszustände durchgeführt.
+Die Berechnungen wurden mit den Basissätzen STO-3G und cc-pVDZ im Hartree-Fock Verfahren durchgeführt.
+Die Ergebnisse der zwei Berechnungen wurden miteinander verglichen und bewertet.
+Die Reaktionsenthalpie, Reaktionsentropie, freie Reaktionsenthalpie und Gleichgewichtskonstante wurden berechnet und mit Literaturwerten verglichen.
+Die Ergebnisse zeigten, dass der cc-pVDZ Basissatz deutlich präzisere Ergebnisse lieferte als STO-3G.
+
+\newpage
+\printbibliography
