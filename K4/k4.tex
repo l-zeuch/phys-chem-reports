@@ -1,0 +1,317 @@
+\section{Einleitung}
+In diesem Versuch wird die Auflösungsgeschwindigkeit eines Salzes in Wasser untersucht, indem die Leitfähigkeit der Lösung gemessen wird.
+Die Temperaturabhängigkeit der Auflösungsgeschwindigkeit wird ebenfalls betrachtet.
+Hier gilt es zu beachten, dass sich die Leitfähigkeit der Lösung ebenfalls mit der Temperatur ändert.
+Zuletzt wird die Sättigungskonzentration des Salzes bestimmt und mit Literaturwerten verglichen.
+
+\section{Theorie}
+Die Diffusion ist ein passiver Transportprozess, bei dem Teilchen aufgrund ihrer thermischen Bewegung von einem Ort höherer Konzentration zu einem Ort niedrigerer Konzentration wandern.
+Die Geschwindigkeit, mit der eine bestimmte Teilchenzahl $n$ pro Zeiteinheit $t$ transportiert wird, abhängig von der effektiven Oberfläche $O$, der Diffusionskonstante $D$ und dem Konzentrationsgradienten $\odv{c}{x}$.
+Dieser Zusammenhang wird durch das Fick'sche Gesetz beschrieben.
+
+Im Versuch wird die gesamte Lösung ständig gerührt, sodass nur in unmittelbarer Nähe der Salzoberfläche ein Konzentrationsgradient besteht, innerhalb der restlichen Lösung ist die Konzentration $c$ nur noch von der Zeit abhängig.
+Das Vorgehen ist wichtig für das Messverfahren, da anhand des zeitlichen Verlaufs der Leitfähigkeit die Lösungsgeschwindigkeit bestimmt wird.
+
+Diese dünne Schicht, in der ungestörte Diffusion stattfindet, wird als Diffusionsschicht bezeichnet und hat die Dicke $\delta$.
+Da sich in diesem Fall die Diffusionsschicht relativ zügig auf einen stationären Zustand einstellt, ist der Konzentrationsgradient in der Diffusionsschicht näherungsweise konstant.
+Hierdurch folgt, dass die angrenzende Lösung gesättigt sein muss, also die Sättigungskonzentration $c_0$ aufweist.
+
+Zunächst wird die Abkürzung $k$ gesetzt
+\begin{equation}
+    k = \frac{D \cdot O}{\delta \cdot V}\, \text{.} \label{eqn:schichtdicke}
+\end{equation}
+Der Diffusionskoeffizient $D$ wird durch eine Beziehung nach Nernst beschrieben. Speziell für 2-2-wertige Elektrolyte gilt
+\begin{align}
+    D &= \frac{RT}{F^2} \cdot \frac{2 \Lambda_+ \Lambda_-}{\Lambda_+ + \Lambda_-} \nonumber \\
+      &= 0.89 T \cdot \frac{(\Lambda_+ \Lambda_-) \cdot 10^{-9}}{\Lambda_+ + \Lambda_-} \unit{\cm\squared\per\second}\, \text{.} \label{eqn:diffusionskoeffizient}
+\end{align}
+Der Auflösungsprozess lässt sich bei Salzen durch Messung der Leitfähigkeit der Lösung verfolgen.
+Bei ausreichender Verdünnung ist die spezifische Leitfähigkeit $\kappa$ der Lösung proportional zur Konzentration $c$ der gelösten Ionen im gesamten Volumen.
+Somit gilt für das integrierte Geschwindigkeitsgesetz:
+\begin{align}
+    k &= - \frac{1}{t} \ln \frac{c_0 - c}{c_0} \\
+    k &= - \frac{1}{t} \ln \frac{\kappa_0}{\kappa_0 - \kappa} \label{eqn:geschwindigkeitsgesetz}
+\end{align}
+
+\section{Durchführung}
+Die Dimensionen eines Gipspresslings wurden mit einem handelsüblichen Geometrie-Dreieck gemessen.
+Etwa \qty{80}{\milli\liter} gesättigte Gipslösung wurde in einen Erlenmeyerkolben gefüllt und dieser in ein Wasserbad platziert.
+Weitere \qty{80}{\milli\liter} destilliertes Wasser wurden in einem Messzylinder in selbiges Wasserbad gestellt.
+
+Das Wasserbad wurde zu Beginn auf \qty{23}{\degreeCelsius} geheizt.
+Nachdem das Wasser im Messzylinder und die Gipslösung eben diese Temperatur angenommen haben, wurde mittels einer Tauchelektrode die Leitfähigkeit der Gipslösung gemessen.
+Anschließend wurde der Gipspressling in ein Glasrohr auf einem Drahtgitter gelegt und die Tauchelektrode so ausgerichtet, dass sie kurz über dem Gipspressling (maximal \qty{5}{\milli\meter} nach Augenmaß) hing.
+Das Wasser wurde vorsichtig in das Glasrohr gefüllt und ein computergestütztes Messprogramm mit einem Messintervall von \qty{10}{\second} wurde über \qty{10}{\minute} gestartet.
+
+Das Wasserbad wurde nach der ersten Messung auf \qty{41}{\degreeCelsius}, und danach nochmals auf \qty{62}{\degreeCelsius} geheizt, sodass die gemessene Wassertemperatur jeweils \qty{40}{\degreeCelsius} und \qty{60}{\degreeCelsius} betrug.
+
+\section{Ergebnisse und Diskussion}
+\subsection{Spezifische Leitfähigkeit $\kappa_0$ einer gesättigten Gipslösung}
+Im Rahmen der experimentellen Durchführung wurden die Sättigungsleitfähigkeiten $\kappa_0$ für die unterschiedlichen Temperaturen jeweils separat bestimmt.
+Die Messwerte sind nachstehend in \autoref{tab:kappa0-messwerte} gelistet. Der Messfehler wurde auf Basis der Gerätanzeige zu \qty{\pm 50}{\micro\siemens\per\cm} geschätzt (Last-Digit-Fehler).
+\begin{table}[H]
+    \centering
+    \caption{Gemessene spezifische Leitfähigkeit $\kappa_{0,exp}$ in \unit{\micro\siemens\per\cm} der gesättigten Gipslösung bei verschiedenen Temperaturen $T$, verglichen mit den entsprechenden Literaturwerten $\kappa_{0,lit}$\autocite{skript-k4b}.}
+    \begin{tabular}{c c c c}
+       \toprule
+        $T\, [\unit{\degreeCelsius}]$ & $\kappa_{0,exp}$ & $\Delta \kappa_{0,exp}$ & $\kappa_{0,lit}$ \\ \midrule
+        23 & 2110 & \pm{} 50 & 1920 \\ \midrule
+        40 & 2860 & \pm{} 50 & 2490 \\ \midrule
+        60 & 3620 & \pm{} 50 & 3200 \\
+       \bottomrule
+    \end{tabular}
+    \label{tab:kappa0-messwerte}
+\end{table}
+
+Die experimentell bestimmten Werte für die spezifische Leitfähigkeit $\kappa_0$ liegen jeweils über den Literaturwerten.
+Dies kann auf Messungenauigkeiten bei der Bestimmung der Temperatur und der Leitfähigkeit zurückzuführen sein.
+Für die weitere Auswertung und die Berechnung der Löslichkeiten und Kinetikkonstanten wurden die gemessenen $\kappa_0$ verwendet.
+
+\subsection{Bestimmung der Auflösungsgeschwindigkeit}
+Aus der zeitlichen Änderung der spezifischen Leitfähigkeit während der Auflösung des Presslings lässt sich die Geschwindigkeitskonstante $k$ bestimmen.
+Hierzu wird die Leitfähigkeit in Abhängigkeit von der Zeit ausgewertet und mittels \autoref{eqn:geschwindigkeitsgesetz} einer linearen Regression unterzogen.
+Die Steigung der Ausgleichsgeraden entspricht direkt der Reaktionskonstanten $k$.
+
+Zur Auswertung werden die gemessenen Werte der spezifischen Leitfähigkeit $\kappa (t)$ für verschiedene Zeitpunkte $t$ analysiert.
+Auf der x-Achse wird die Zeit $t$ aufgetragen, während auf der y-Achse der Ausdruck
+\[
+    \ln \left( \frac{\kappa_0}{\kappa_0 - \kappa (t)} \right)
+\]
+dargestellt wird.
+
+Für jede der untersuchten Temperaturen (23°C, 40°C und 60°C) wurde eine separate lineare Regression durchgeführt.
+Das Konfidenzintervall wurde auf $\sigma$ gesetzt ($\approx 66\%$).
+Der Betrag der gesuchte Geschwindigkeitskonstante $k$ ist entsprechend den Erwartungen für jede Temperatur unterschiedlich. 
+Es ist zu beobachten, dass die Geschwindigkeitskonstante $k$ mit steigender Temperatur ebenfalls zunimmt.
+
+Das erste Fick'sche Gesetzt beschreibt die Diffusion als temperaturabhängigen Prozess, bei dem die Beweglichkeit der Teilchen mit steigender Temperatur zunimmt.
+\begin{align*}
+    J &= -D \pdv{c}{x} \\
+\intertext{mit}
+    D &= K \frac{RT}{c}
+\end{align*}
+Aus diesem Zusammenhang wird deutlich, dass die Diffusionskonstante $D$ proportional zur absoluten Temperatur $T$ ist, und somit auch die Auflösungsgeschwindigkeit mit steigender Temperatur zunimmt.
+
+\begin{table}[H]
+    \centering
+    \caption{Grafisch bestimmte Geschwindigkeitskonstanten $k$ der Auflösungsgeschwindigkeit für verschiedene Temperaturen $T$.}
+    \begin{tabular}{c c c}
+    \toprule
+        $T\, [\unit{\degreeCelsius}]$ & $k\, [\unit{\per\second}]$ & $\Delta k\, [\unit{\per\second}]$ \\ \midrule
+        23 & \num{258.0e-6} & \pm{} \num{2.0e-6} \\ \midrule
+        40 & \num{862.5e-6} & \pm{} \num{6.2e-6} \\ \midrule
+        60 & \num{19.2e-3}  & \pm{} \num{0.2e-3}\\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Die Sättigungskonzentration $c_0$ der Salzlösung}
+
+\begin{table}[H]
+    \centering
+    \caption{Äquivalentleitfähigkeiten $\Lambda$ für Calcium- und Sulfat-Ionen bei verschiedenen Temperaturen $T$. Adaptiert aus der Versuchsanleitung.}
+    \begin{tabular}{c c c}
+        \toprule
+        $T [\unit{\degreeCelsius}]$ & $\Lambda_{\ch{Ca^2+}} [\unit{\centi\meter\squared\per\ohm\per\mol}] $ & $\Lambda_{\ch{SO4^2-}} [\unit{\centi\meter\squared\per\ohm\per\mol}]$ \\ \midrule
+        23 & 65.9 & 90.4 \\ \midrule
+        40 & 97.0 & 127.0 \\ \midrule
+        60 & 133.5 & 170.1 \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:Lambda-literatur}
+\end{table}
+
+Zur Bestimmung der Sättigungskonzentration $c_0$ wird die gemessene Sättigungsleitfähigkeit $\kappa_0$ (\autoref{tab:kappa0-messwerte}) verwendet.
+Aus der Leitfähigkeit und den bekannten Äquivalentleitfähigkeiten der Ionen (\autoref{tab:Lambda-literatur}) lässt sich $c_0$ berechnen.
+\begin{align}
+    c_0 &= \left( \frac{\kappa_0}{\Lambda^+ + \Lambda^-} \right) \cdot 1000 \label{eqn:sättigungskonzentration} \\
+    c_0(\qty{23}{\degreeCelsius}) &= \left( \frac{\qty{0.0021}{\per\ohm\per\centi\meter}}{\qty{65.9}{\centi\meter\squared\per\ohm\per\mol} + \qty{90.4}{\centi\meter\squared\per\ohm\per\mol}} \right) \cdot 1000 \nonumber \\
+                                 &= \qty{0.0135}{\mol\per\liter} \nonumber
+\end{align}
+Analog werden $c_0$ für \qty{40}{\degreeCelsius} und \qty{60}{\degreeCelsius} berechnet.
+\begin{table}[H]
+    \centering
+    \caption{Nach obigem Verfahren berechnete $c_0$ der Salzlösung für verschiedene Temperaturen $T$.}
+    \begin{tabular}{c c c c}
+    \toprule
+        $T\, [\unit{\degreeCelsius}]$ & $c_0\, [\unit{\milli\mol\per\liter}]$ & $\Delta c_0\, [\unit{\milli\mol\per\liter}]$ & $c_{0}\, [\unit{\milli\mol\per\liter}]$ (Literatur) \\ \midrule
+        23 & 13.5 & \pm{} 0.4 & 11.82 ($T = \qty{20.0}{\degreeCelsius}$)\autocite{Raupenstrauch1885-ng}\\ \midrule
+        40 & 12.8 & \pm{} 0.3 & 12.28 ($T = \qty{38.4}{\degreeCelsius}$)\autocite{Raupenstrauch1885-ng} \\ \midrule
+        60 & 11.9 & \pm{} 0.2 & 11.87 ($T = \qty{59.0}{\degreeCelsius}$)\autocite{Raupenstrauch1885-ng} \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+Die Diskrepanz zwischen den theoretisch erwarteten und den experimentell gemessenen Löslichkeitswerten $c_0$ kann sich aus Messungenauigkeiten bei der Bestimmung der Sättigungsleitfähigkeit $\kappa_0$ ergeben.
+So konnte die Temperatur des Wasserbades nicht konstant auf dem Sollwert gehalten werden, was zu Abweichungen bei der Leitfähigkeitsmessung führen kann.
+Der Gerätefehler des Leitfähigkeitsmessgeräts von \qty{\pm 0.1}{\micro\siemens\per\cm} trägt ebenfalls zur Unsicherheit bei, obwohl dieser im Vergleich zur Temperatur eher weniger ins Gewicht fällt.
+Ferner ist zu beachten, dass die Literaturwerte bei leicht abweichenden Temperaturen angegeben sind.
+Diese Faktoren führen dazu, dass die experimentellen $c_0$-Werte höher als die angegebenen Literaturwerte ausfallen.
+
+Die Abnahme der Löslichkeit mit steigender Temperatur deutet auf eine retrograde Löslichkeit hin, was auf einen exothermen Auflösungsprozess schließen lässt.
+Dieser ist bei Gips bekannt, mit einem Maximum der Löslichkeit bei etwa \qty{38}{\degreeCelsius}.\autocite{partridge1929solubility}
+Dieses Maximum ist jedoch in den experimentellen Daten nicht erkennbar, was auf systematische Fehler in der Versuchsdurchführung hindeutet, speziell bei $T = \qty{23}{\degreeCelsius}$.
+
+\subsection{Experimentelle Ermittlung der Diffusionsschichtdicke}
+
+\subsubsection{Oberfläche des Presslings}
+Der Pressling wird genähert als Zylinder betrachtet.
+Aufgrund des Lösungsvorganges ist jedoch davon auszugehen, dass die tatsächliche Oberfläche größer als genähert ist, und sich zusätzlich mit der Zeit verändert.
+Da Calciumsulfat jedoch schwer wasserlöslich ist und somit nur kleinste Veränderungen der Oberfläche zu erwarten sind, ist diese Näherung gerechtfertigt.
+\begin{align}
+    O_{Zylinder} &= \pi dh + 2\pi r^2 \label{eqn:oberfläche}\\
+    d &= \qty{1.3 \pm 0.1}{\milli\meter} \nonumber \\
+    h &= \qty{0.2 \pm 0.1}{\centi\meter} \nonumber \\
+    \implies O_{Zylinder} &= \pi \cdot \qty{1.3 \pm 0.1}{\centi\meter} \cdot \qty{0.2 \pm 0.1}{\centi\meter} + \pi \cdot (\qty{1.3\pm 0.1}{\centi\meter})^2 \nonumber \\
+    O &= \qty{6.12 \pm 0.98}{\centi\meter\squared}\, \text{.} \nonumber
+\end{align}
+
+\subsubsection{Berechnung der Schichtdicke $\delta$}
+
+Die Schichtdicke berechnet sich nach \autoref{eqn:schichtdicke}.
+Hierzu wird zunächst das Verhältnis $\frac{O}{\delta}$ aus den Gleichgewichtskonstanten $k$ und Diffusionskoeffizienten $D$, sowie des Volumens $V = \qty{80}{\milli\liter}$ bestimmt.
+\begin{align*}
+    \frac{O}{\delta} &= \frac{k}{D}V := X \\
+    \delta &= \frac{D \cdot O}{k \cdot V} \tag{\ref{eqn:schichtdicke} Wdh.} \\
+    D &= 0.89 T \cdot \frac{(\Lambda_+ \Lambda_-) \cdot 10^{-9}}{\Lambda_+ + \Lambda_-} \unit{\cm\squared\per\second} \tag{\ref{eqn:diffusionskoeffizient} Wdh.} \\
+\intertext{Für \qty{23}{\degreeCelsius} folgt somit}
+    D(\qty{23}{\degreeCelsius}) &= 0.89 \cdot 296.15 \cdot \frac{(65.9 \cdot 90.4) \cdot 10^{-9}}{65.9 + 90.4}\unit{\cm\squared\per\second} \\
+                                &= \qty{1.005e-5}{\centi\meter\squared\per\second} \\
+               \frac{O}{\delta} &= \frac{\qty{258.0 \pm 2.0e-6}{\per\second}}{\qty{1.005e-5}{\cm\squared\per\second}} \cdot \qty{80}{\cm\cubed} \\
+                                &= \qty{2053.7 \pm 4.0}{\cm} \\
+                         \delta &= \frac{\qty{6.12 \pm 0.98}{\cm\squared}}{\qty{2053.7 \pm 4.0}{\cm}} \\
+                                &= \qty{3.0 \pm 5.0}{\micro\meter}
+\end{align*}
+\begin{table}[H]
+    \centering
+    \caption{Berechnete Diffusionskoeffizienten $D$, Schichtdicken der Diffusionsschicht $\delta$ bei verschiedenen Temperaturen $T$.}
+    \begin{tabular}{c c c c}
+        \toprule
+        $T\, [\unit{\degreeCelsius}]$ & $D\, [\unit{\cm\squared\per\second}]$ & $\frac{O}{\delta}\, [\unit{\cm}]$ & $\delta\, [\unit{\micro\meter}]$ \\ \midrule
+        23 & \num{1.005e-5} & \num{2053.7 +- 4.0} & \num{3.0 +- 5.0} \\ \midrule
+        40 & \num{1.532e-5} & \num{4503.9 +- 5.7} & \num{1.0 +- 2.2} \\ \midrule
+        60 & \num{2.213e-5} & \num{69408 +- 27}   & \num{0.88 +- 0.15} \\ \midrule
+    \end{tabular}
+\end{table}
+
+\subsection{Zusammenfassung}
+Die Auflösungsgeschwindigkeit von Gips in Wasser wurde experimentell durch Messung der Leitfähigkeit der Lösung bei den Temperaturen \qty{23}{\degreeCelsius}, \qty{40}{\degreeCelsius} und \qty{60}{\degreeCelsius} untersucht.
+Die Gleichgewichtskonstanten $k$ der Auflösung konnten aus den Messdaten grafisch bestimmt werden und zeigen eine deutliche Zunahme mit steigender Temperatur, was auf die erhöhte Diffusionsbeweglichkeit der Ionen zurückzuführen ist.
+Die experimentell bestimmten Sättigungskonzentrationen der Salzlösung liegen in der Größenordnung der Literaturwerte\autocite{Raupenstrauch1885-ng}$^,$\autocite{partridge1929solubility}, zeigen jedoch Abweichungen, die auf Messungenauigkeiten und systematische Fehler zurückzuführen sind.
+Der exotherme Charakter des Auflösungsprozesses von Gips konnte durch die Abnahme der Löslichkeit mit steigender Temperatur bestätigt werden.
+Die berechneten Diffusionsschichtdicken liegen im Bereich von einigen Mikrometern, und nehmen mit steigender Temperatur ab, da die Diffusionsvorgänge bei höheren Temperaturen begünstigt werden.
+
+\section{Zusatzfragen}
+Der spezifische Widerstand ($\rho$) und die spezifische Leitfähigkeit ($\kappa$) sind reziproke Kenngrößen eines Materials.
+$\rho$ bezeichnet die Strombehinderung und $\kappa$ die Stromleitung, wobei $\kappa$ typischerweise in \unit{\siemens\per\centi\meter} angegeben wird und sich auf eine definierte Geometrie
+mit der Länge $l$ und der Querschnittsfläche $A$ bezieht.
+\begin{align}
+    \rho &= R \cdot \frac{A}{l} \\
+    \kappa &= \frac{1}{\rho} \\
+           &= \frac{L}{R \cdot A}\, \text{.}
+\end{align}
+Die experimentelle Bestimmung von $\kappa$ erfolgt mittels der Zellkonstante $C_{\text{Zelle}}$, die das Verhältnis von Elektrodenabstand $L$ zur Elektrodenfläche $A$ angibt.
+Somit errechnet sich die spezifische Leitfähigkeit aus der gemessenen Leitfähigkeit $G$ und der Zellkonstante.\autocite{jander/blasius2}
+\begin{equation}
+    \kappa = G \cdot C_{\text{Zelle}}
+\end{equation}
+Um die Leitfähigkeit unabhängig zur Konzentration zu bewerten, wird die Äquivalentleitfähigkeit $\Lambda$ verwendet\autocite{job-ruffler-phys-chem:equivalent}, welche $\kappa$ zur Äquivalentkonzentration ($c_{\text{eq}}$) in Beziehung setzt
+\begin{equation}
+    \Lambda = \frac{\kappa}{c_{eq}}\, \text{.}
+\end{equation}
+Die gesamte Leitfähigkeit resultiert dabei aus der Wanderungsgeschwindigkeit der Ionen $v$ in der Lösung unter Einfluss eines elektrischen Feldes $E$.
+$v$ wird durch die Ionenbeweglichkeit $u$ und die Feldstärke bestimmt.\autocite{job-ruffler-phys-chem:wanderungsgeschwindigkeit}
+\begin{equation}
+    v = u \cdot E
+\end{equation}
+Leitfähigkeitsmessgeräte (Konduktometer) bestimmen die spezifische Leitfähigkeit ($\kappa$) einer Elektrolytlösung, indem sie in der Messzelle den elektrischen Widerstand der Lösung zwischen inerten Elektroden messen, wobei zur Vermeidung von Polarisation Wechselstrom eingesetzt wird\autocite{job-ruffler-phys-chem:konduktometer}.
+
+Das Messgerät berechnet $\kappa$ aus der gemessenen Leitfähigkeit und der Zellkonstante unter automatischer Temperaturkompensation auf eine Bezugstemperatur (z.B. \qty{25}{\degreeCelsius}), da $\kappa$ ---wie im Versuch bestätigt---von der Temperatur abhängt.
+Die Leitfähigkeit wird primär von der Konzentration ($c$) und der Ionenbeweglichkeit ($u$) bestimmt\autocite{atkins-leitfähigkeit}, wobei $u$ von der Ionennatur (Größe, Ladung, Solvatationsgrad) und der Lösungsmittelviskosität beeinflusst wird.
+Höhere Temperatur und Dissoziationsgrad ($\alpha$, insbesondere bei schwachen Elektrolyten) erhöhen $\kappa$\autocite{atkins-beweglichkeit}.
+
+Die spezifische Leitfähigkeit ($\kappa$) steigt näherungsweise linear mit der Konzentration an, während die Äquivalentleitfähigkeit ($\Lambda$) --- welche $\kappa$ zur Konzentration in Beziehung setzt --- mit abnehmender Konzentration zunimmt, da die störenden interionischen Wechselwirkungen nachlassen.
+Nach dem Gesetz von der unabhängigen Ionenwanderung (Kohlrausch) ist die Grenzleitfähigkeit ($\Lambda_0$) bei unendlicher Verdünnung die additive Summe der Grenz-Ionenleitfähigkeiten der einzelnen Ionen, da dann interionische Kräfte vernachlässigbar sind.
+\begin{equation}
+\Lambda_0 = \nu_+ \cdot \lambda_{0,+} + \nu_- \cdot \lambda_{0,-}
+\end{equation}
+
+\newpage
+\printbibliography
+\newpage
+\appendix
+
+\section{Berechnung der Messunsicherheiten}
+\subsection{Geschwindigkeitskonstante}
+Die Unsicherheit in $\ln \left( \frac{\kappa_0}{\kappa_0 - \kappa} \right)$ wird nach Gauß bestimmt. Die Zeit $t$ wird als fehlerfrei angenommen, da die Messung digital erfolgte.
+Auf Basis der Geräteanzeige wurde hier der Fehler von $\kappa$ zu \qty{0.0000001}{\siemens\per\cm} (\qty{0.1}{\micro\siemens\per\cm}) geschätzt (Last-Digit-Fehler).
+Der Lesbarkeit halber wird hier $u$ für den Logarithmus-Ausdruck verwendet.
+\begin{align*}
+    k &= - \frac{1}{t} \ln \frac{\kappa_0}{\kappa_0 - \kappa} \tag{\ref{eqn:geschwindigkeitsgesetz} Wdh.} \\
+    \implies \Delta u &= \sqrt{\left( \pdv{k}{\kappa} \cdot \Delta \kappa \right)^2 + \left( \pdv{k}{\kappa_0} \cdot \Delta \kappa_0 \right)^2} \\
+    \implies \Delta u &= \sqrt{\left( \frac{1}{(\kappa_0 - \kappa)^2} \cdot \Delta \kappa \right)^2 + \left( \frac{\kappa_0}{(\kappa_0 - \kappa)^2} \cdot \Delta \kappa_0 \right)^2} \\
+    \intertext{Beispielhaft für \qty{60}{\degreeCelsius} bei $t = \qty{10}{\second}$}
+    \Delta u &= \sqrt{\left( \frac{1}{(0.0032 - \num{51.4e-6})} \cdot \num{0.1e-6} \right)^2
+                            + \left( \frac{0.0032}{(0.0032 - \num{51.4e-6})^2} \cdot \num{0.1e-6} \right)^2 } \\
+    \Delta u &= 0.010
+\end{align*}
+Analog hierzu wurden für alle erfassten Werte über alle Temperaturen die Fehler mittels eines Tabellenkalkulationsprogramms berechnet und in die angehängten grafischen Auftragungen eingezeichnet.
+
+Die Unsicherheit der Geschwindigkeitskonstanten $\Delta k$ ergibt sich aus dem Mittelwert der eingezeichneten Extremgeraden, welcher auch zugleich die Steigung der Regression ist.
+Diese sind in den angehängten Aufzeichnungen direkt eingetragen.
+\newpage
+\subsection{Sättigungskonzentration der Salzlösung}
+Die Unsicherheit in $c_0$ wird hauptsächlich durch den Fehler von $\kappa_0$ bestimmt.
+\begin{align*}
+    c_0 &= \left( \frac{\kappa_0}{\Lambda^+ + \Lambda^-} \right) \cdot 1000 \tag{\ref{eqn:sättigungskonzentration} Wdh.}\\
+\intertext{mit}
+                    \Delta c_0 &= \pdv{c_0}{\kappa_0} \cdot \Delta \kappa_0 \\
+           \implies \Delta c_0 &= \left( \frac{1}{\Lambda^+ + \Lambda^-} \right) \cdot \Delta \kappa_0 \cdot 1000\, \text{.} \\
+\intertext{Der Gerätefehler $\Delta \kappa_0$ wurde geschätzt zu}
+    \Delta \kappa_0 &= \qty{0.00005}{\per\ohm\per\centi\meter}\, (\hat{=} \qty{50}{\micro\siemens}) \text{.}
+\intertext{Für \qty{40}{\degreeCelsius} folgt}
+    \Delta c_0 &= \frac{1}{\qty{224}{\centi\meter\squared\per\ohm\per\mol}} \cdot \qty{0.00005}{\per\ohm\per\centi\meter} \cdot 1000 \\
+               &= \qty{0.00022}{\mol\per\liter} \\
+    \Delta c_0 &\approx \qty{0.0003}{\mol\per\liter}
+\end{align*}
+Analog werden die $\Delta c_0$ der Temperaturen \qty{23}{\degreeCelsius} und \qty{60}{\degreeCelsius} berechnet.
+
+\subsection{Berechnung der Schichtdicke}
+\subsubsection{Oberfläche}
+Die Unsicherheit in $O$ wird durch die Unsicherheiten in $d$ und $h$ bestimmt.
+Fehlerrechnung nach Gauß.
+\begin{align*}
+    O &= \pi dh + \pi d^2 \tag{\ref{eqn:oberfläche} Wdh.}\\
+    \Delta O &= \sqrt{\left( \pdv{O}{d} \cdot \Delta d \right)^2 + \left( \pdv{O}{h} \cdot \Delta h \right)^2} \\
+             &= \sqrt{\left( \pi(2d + h) \Delta d \right)^2 + \left( \pi d \Delta h \right)^2 } \\
+             &= \sqrt{\left( \pi (2 \cdot \qty{1.3}{\centi\meter} + \qty{0.2}{\centi\meter}) \cdot \qty{0.1}{\centi\meter} \right)^2 + \left( \pi \cdot \qty{1.3}{\centi\meter} \cdot \qty{0.1}{\centi\meter} \right)^2 } \\
+    \Delta O &= \qty{0.9698}{\centi\meter\squared} \\
+\end{align*}
+\newpage
+\subsubsection{Verhältnis O zu $\delta$}
+Das Verhältnis $\frac{O}{\delta} = a$ wird aus der Gleichgewichtskonstanten $k$, dem Diffusionskoeffizienten $D$ und dem Volumen $V$ berechnet.
+Von einem Fehler sei lediglich $k$ behaftet.
+Es folgt nach Gauß
+\begin{align*}
+    \Delta a &= \sqrt{ \left( \pdv{a}{k} \cdot \Delta k \right) } \\
+             &= \sqrt{ \left( \frac{V}{D} \cdot \Delta k \right) }\, \text{.} \\
+\intertext{Für \qty{23}{\degreeCelsius} folgt}
+             &= \sqrt{ \left( \frac{\qty{80}{\milli\liter}}{\qty{1.005e-5}{\cm\squared\per\second}} \cdot \qty{2.0e-6}{\per\second} \right) } \\
+             &= \qty{3.99}{\cm} \approx \qty{4.0}{\cm}
+\end{align*}
+Analog werden die Unsicherheiten der Verhältnisse für \qty{40}{\degreeCelsius} und \qty{60}{\degreeCelsius} berechnet.
+
+\subsubsection{Schichtdicke}
+Die Schichtdicke hängt nun ausschließlich von $\frac{O}{\delta} = X$ und $O$ ab.
+Erneut nach Gauß
+\begin{align*}
+    \Delta \delta &= \sqrt{ \left( \pdv{\delta}{O} \cdot \Delta O \right)^2 + \left( \pdv{\delta}{X} \cdot \Delta X \right)^2  } \\
+                  &= \sqrt{ \left( \frac{1}{X} \cdot \Delta O \right)^2 + \left( - \frac{O}{X^2} \Delta X \right)^2 }\, \text{.} \\
+\intertext{Für \qty{23}{\degreeCelsius} folgt}
+    \Delta \delta &= \sqrt{ \left( \frac{1}{\qty{2053.7}{\cm}} \cdot \qty{0.98}{\cm\squared} \right)^2 
+                            + \left( \frac{\qty{6.12}{\cm\squared}}{(\qty{2053.7}{\cm})^2} \cdot \qty{4.0}{\cm} \right)^2 } \\
+                  &= \qty{4.77e-4}{\cm} \approx \qty{5}{\micro\meter}\, \text{.}
+\end{align*}
+
+\includepdf[landscape=true]{K4/23.pdf}
+\includepdf[landscape=true]{K4/40.pdf}
+\includepdf[landscape=true]{K4/60.pdf}
