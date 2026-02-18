@@ -1,0 +1,236 @@
+\section{Einleitung}
+
+In diesem Versuch wird die Oberflächenspannung verschiedener Lösungen bestimmt.
+Hierzu wird die Blasendruckmethode verwendet, bei der der Druck gemessen wird, der benötigt wird, um eine Luftblase durch eine Flüssigkeit zu drücken.
+Ferner wird die Temperaturabhängigkeit der Oberflächenspannung untersucht, sowie das Verhalten von kapillaraktiven und kapillarinaktiven Substanzen beobachtet.
+
+\section{Theorie}
+
+Die Oberflächenspannung $\sigma$ --- stellenweise auch $\gamma$ --- ist eine physikalische Größe, die die Energie beschreibt, die benötigt wird, um die Oberfläche einer Flüssigkeit zu vergrößern.
+Nach der Blasendruckmethode wird eine Kapillare in die Flüssigkeit eingetaucht und eine Luftblase herausgedrückt.
+Hierzu muss einerseits der hydrostatische Druck $p_h$, abhängig von der Eintauchtiefe $h_k$, aber auch der Kapillardruck $p_{\sigma}$, abhängig vom Radius der Kapillare, aufgewandt werden.
+Es folgt für den Gesamtdruck $p_g$
+\begin{align}
+    p_h        &= h_k \rho g \nonumber \\
+    p_{\sigma} &= \frac{2\sigma}{r_k} \nonumber \\
+    p_g        &= \frac{2\sigma}{r_k} + \rho_p g h_k
+\end{align}
+Der Ausdruck für $p_{\sigma}$ leitet sich aus der Young-Laplace-Gleichung her, die eine Druckdifferenz beschreibt.
+Zunächst wird vom hydrostatischen Gleichgewicht ausgegangen.
+Die Grenzfläche bildet in genügend schmalen Röhrchen einen Meniskus aus, der ein Kugelsegment darstellt.
+Der Radius $R$ dieser Kugel hängt ausschließlich vom Kontaktwinkel der Grenzfläche mit der Kapillare ab.
+Es folgt somit für $\Delta p$
+\begin{align*}
+    \Delta p = \rho gh &= \frac{2\sigma\cos\theta}{a} \\
+                     R &= \frac{a}{\cos\theta} \\
+              \Delta p &= \frac{2\sigma}{R}\, \text{.}
+\end{align*}
+
+\newpage
+
+Nun wird recht klar, dass der Maximaldruck erreicht ist, wenn der Radius der Blase --- anschaulich ein auf dem Kopf stehender Meniskus --- gerade dem Kapillarradius entspricht,
+da die Druckdifferenz bei einem Kontaktwinkel von \qty{90}{\degree} null ist.
+Für die Bestimmung der Oberflächenspannung genügt es somit, eben diesen Maximaldruck zu messen.
+\begin{align}
+    \sigma &= ( \rho_{H_{2}O} \cdot \Delta h - \rho_p \cdot h_k) \cdot \frac{r_k g}{2} \label{eqn:oberflächenspannung} \\
+    r_k &= 2 \cdot \frac{\sigma}{(\rho_{H_{2}O} \cdot \Delta h - \rho_p \cdot h_k) \cdot g} \label{eqn:kapillarradius}
+\end{align}
+
+Die Temperaturabhängigkeit ist nach \textit{Eötvös} gegeben durch
+\begin{align}
+                \sigma_{mol} &= a \big( (T_k - 6 \text{\unit{\kelvin}} - T) \big) \\
+    \text{mit } \sigma_{mol} &= \sigma V^{\frac{2}{3}} \nonumber
+\end{align}
+
+Kapillaraktive Stoffe neigen zur Anreicherung an der Oberfläche des Stoffes, in dem sie gelöst sind; so sammeln sich beispielsweise Tenside eher an der Wasseroberfäche.
+Umgekehrt streben kapillarinaktive Stoffe von der Oberfläche weg, wie es für gelöste Salze --- also Ionen --- der Fall ist.
+Diese umgeben sich mit einer möglichst großen Hydrathülle, was intuitiv an der Wasseroberfläche gehindert ist.
+Betrachtet man nun das Verhältnis zwischen An- beziehungsweise Abreicherung an der Grenzfläche zur gesamten Konzentration im Volumen, so erhält man den Grenzflächenüberschuss $\Gamma_2$.
+Trägt man $\sigma$ als Funktion der Konzentration $x_2$ beziehungsweise $\ln x_2$ auf, so entspricht die Ableitung am entsprechendem Punkt gerade der Grenzflächenkonzentration.
+\begin{align}
+    \Gamma_2 &= - \frac{1}{RT} \left( \pdv{\sigma}{\ln x_2} \right) = - \frac{x_2}{RT} \left( \pdv{\sigma}{x_2^{\prime}} \right) \label{eqn:grenzfläche}
+\end{align}
+
+
+\section{Durchführung}
+
+Ein Manometer wurde bis zur Hälfte der Schenkel mit Wasser befüllt.
+In einem daran angeschlossenen Vorratsgefäß wurde ebenfalls bis zur Hälfte Wasser eingefüllt.
+Eine Kapillare wurde in die Probenflüssigkeit getaucht, bis der Abstandshalter gerade die Oberfläche berührt.
+Die Eintauchtiefe wurde notiert.
+
+Ein Temperiergefäß wurde mit Wasser befüllt und der Thermostat auf \qty{21}{\degreeCelsius} eingestellt.
+Aus dem Vorratsgefäß wurde Wasser ausgelassen, sodass ein Druck in dem gesamten Aufbau ensteht.
+Der sich aufbauende Druck wurde am Manometer mittels Millimeterpapier markiert.
+Dies wurde für 30, 40, 50, 60, und \qty{70}{\degreeCelsius} wiederholt.
+Jede Messung wurde in Vierfachbestimmung durchgeführt.
+
+Die Dichte einer 5~Vol.\% Lösung von Aceton in Wasser wird bestimmt.
+Dazu wurde ein \qty{50}{\milli\liter} Maßkolben leer gewogen, bis zur Eichmarke befüllt, und erneut gewogen.
+In ein \qty{100}{\milli\liter} Becherglas wurden \qty{50}{\milli\liter} dieser Probenlösung gefüllt.
+Die Oberflächenspannung wurde wie oben beschrieben bestimmt.
+Dieser Versuchsteil wird für 10, 20, 25, 50, und 100\% Aceton wiederholt.
+
+\section{Auswertung}
+
+\subsection{Kapillarradius}
+Zur Bestimmung des Kapillarradius wird \autoref{eqn:kapillarradius} verwendet.
+$\Delta h$ wurde in vierfacher Bestimmung zu \qty{0.0338 \pm 0.001}{\meter} gemittelt.
+$\sigma$ = \qty{0.0726}{\newton\per\meter} und $\rho_{H_{2}O}$ = \qty{998.1}{\kilo\gram\per\cubic\meter} wurden dem Skript\autocite{e3_skript} entnommen.
+\begin{align*}
+    r_k &= 2 \cdot \frac{\sigma}{(\rho_{H_{2}O} \cdot \Delta h - \rho_p \cdot h_k) \cdot g} \\
+        &= 2 \cdot \frac{\qty{0.07236}{\newton\per\meter}}
+            {(\qty{998.1}{\kilo\gram\per\cubic\meter} \cdot \qty{0.0338}{\meter} - \qty{998.1}{\kilo\gram\per\cubic\meter} \cdot \qty{0.015}{\meter}) \cdot \qty{9.81}{\meter\per\second\squared}} \\
+        &= \qty{7.909 e-4}{\meter} \approx \qty{0.8 \pm 0.15}{\milli\meter}
+\end{align*}
+
+\subsection{Aceton-Wasser-Gemische}
+
+\subsubsection{Dichtebestimmungen}
+Der angebene Fehler der verwendeten Maßkolben beträgt \qty{\pm 0.06}{\milli\liter}.
+Es wurde zusätzlich ein Ablesefehler abgeschätzt, sodass der Gesamtfehler der Maßkolben zu \qty{\pm 0.5}{\milli\liter} angenommen wird.
+Die Dichte $\rho$ wird über die Massendifferenz und das Volumen $V$ berechnet. Beispielhaft für die 5~Vol.\% Lösung:
+\begin{align*}
+    \rho &= \frac{\Delta m}{V} \\
+         &= \frac{88.93\, \text{\unit{\gram}} - 39.70\, \text{\unit{\gram}}}{50\, \text{\unit{\milli\liter}}} \\
+    \rho &= 0.9846\, \text{\unit{\gram\per\milli\liter}} = 0.9846\, \text{\unit{\kilo\gram\per\liter}} \, \text{.}
+\end{align*}
+
+\begin{table}[H]
+    \centering
+    \caption{
+        Massen der leeren Maßkolben und der befüllten Maßkolben zur Dichtebestimmung der Aceton-Wasser-Gemische.
+        Die Unsicherheiten wurden nach obigem Verfahren berechnet und auf die erste von null verschiedene Stelle gerundet.
+        Die berechneten Dichten wurden entsprechend der Unsicherheit gerundet.
+    }
+    \begin{tabular}{c c c c c c}
+        \toprule
+        Vol.\% & $c$ / \unit{\mol\per\liter} & $m_{\text{leer}}$ / \unit{\gram} & $m_{\text{voll}}$ / \unit{\gram} & $\Delta m$ / \unit{\gram} & $\rho$ / \unit{\gram\per\milli\liter} \\ \midrule
+        5\%   & 0.68 & 39.70 \pm{} 0.01 & 88.93 \pm{} 0.01 & 49.23 \pm{} 0.02 & 0.98 \pm{} 0.01 \\ \midrule
+        10\%  & 1.36 & 40.93 \pm{} 0.01 & 90.16 \pm{} 0.01 & 49.23 \pm{} 0.02 & 0.98 \pm{} 0.01 \\ \midrule
+        20\%  & 2.72 & 43.82 \pm{} 0.01 & 92.25 \pm{} 0.01 & 48.43 \pm{} 0.02 & 0.97 \pm{} 0.01 \\ \midrule
+        25\%  & 3.40 & 42.29 \pm{} 0.01 & 90.39 \pm{} 0.01 & 48.10 \pm{} 0.02 & 0.96 \pm{} 0.01 \\ \midrule 
+        50\%  & 6.80 & 40.08 \pm{} 0.01 & 86.66 \pm{} 0.01 & 46.58 \pm{} 0.02 & 0.93 \pm{} 0.01 \\ \midrule
+        100\% & 13.6 & -- & -- & -- & 0.7910 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsubsection{Oberflächenspannungen}
+Die Oberflächenspannung berechnet sich mit \autoref{eqn:oberflächenspannung} aus dem gemessenen $\Delta h$, der gemessenen Eintauchtiefe $h_k$ und dem berechneten Kapillarradius $r_k$.
+\begin{align*}
+    \sigma &= ( \rho \cdot \Delta h - \rho_p \cdot h_k) \cdot \frac{r_k g}{2} \\
+    \sigma_{5\%} &= ( \qty{980}{\kilo\gram\per\cubic\meter} \cdot \qty{28}{\milli\meter} - \qty{980}{\kilo\gram\per\cubic\meter} \cdot \qty{0.015}{\meter} )
+                    \cdot \frac{\qty{0.0008}{\meter} \cdot \qty{9.81}{\meter\per\second\squared}}{2} \\
+                 &= 49.99
+\end{align*}
+\begin{table}[H]
+    \centering
+    \caption{Berechnete Konzentrationen, dereren natürlichen Logarithmus, und Oberflächenspannungen der untersuchten Aceton-Lösungen.}
+    \begin{tabular}{c c c}
+        \toprule
+        $c$ / \unit{\mole\per\liter} & $\ln c$ & $\sigma$ / \unit{\milli\newton\per\meter}  \\ \midrule
+        0.68 & -0.39 & 49.9 \\ \midrule
+        1.36 & 0.31 & 42.3 \\ \midrule
+        2.72 & 1.00 & 32.4 \\ \midrule
+        3.40 & 1.22 & 26.4 \\ \midrule
+        6.8 & 1.92 & 15.7 \\ \midrule
+        13.6 & 2.61 & -0.62 \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:placeholder}
+\end{table}
+
+Die grafische Darstellungen sind dem Anhang beigefügt.
+Der Verlauf entspricht den Erwartungen, da nach \autoref{eqn:grenzfläche} die Grenzflächenkonzentration eine Exponentialfunktion ist.
+Durch Linearisierung über Auftragung der Oberflächenspannung gegen den natürlichen Logarithmus der Konzentration kann man anhand der Ableitung dessen die Grenzflächenspannung bestimmen.
+Die Steigung der eingezeichneten Gerade wurde zu $y = -16.42 x + 46$ bestimmt.
+Es folgt somit
+\begin{align*}
+    \sigma &= 16.42 \cdot e^{-c} + 46 \\
+           &= 16.42 \cdot e^{-0.1} + 46 \\
+           &= 60.857\, \text{.}
+\end{align*}
+
+\subsection{Oberflächenspannung Wasser}
+Die Oberflächenspannung berechnet sich mit \autoref{eqn:oberflächenspannung} aus dem gemessenen $\Delta h$, der gemessenen Eintauchtiefe $h_k$ und dem berechneten Kapillarradius $r_k$.
+Für die Dichten von Wasser bei 21, 30, 40, 50, 60, und \qty{70}{\degreeCelsius} wurde ein Tabellenwerk\autocite{crc:std-density:water} herangezogen.
+Beispielrechnung für $T$ = \qty{30}{\degreeCelsius}.
+Alle berechneten Oberflächenspannung sind in \autoref{tbl:surfacetensions_water} gelistet.
+\begin{align*}
+    \sigma &= ( \rho_{H_{2}O} \cdot \Delta h - \rho_p \cdot h_k) \cdot \frac{r_k g}{2} \\
+    \sigma_{\qty{30}{\degreeCelsius}} &= ( \qty{995.6}{\kilo\gram\per\cubic\meter} \cdot \qty{0.033}{\meter} - \qty{995.6}{\kilo\gram\per\cubic\meter} \cdot \qty{0.015}{\meter} )
+                                         \cdot \frac{\qty{0.0008}{\meter} \cdot \qty{9.81}{\meter\per\second\squared}}{2} \\
+                                      &= \qty{70.32}{\milli\newton\per\meter}
+\end{align*}
+
+\begin{table}[H]
+    \centering
+    \caption{
+        Anhand von $\Delta h$ berechnete Oberflächenspannungen $\sigma$ von Wasser bei verschiedenen Temperaturen $T$ nach obigem Verfahren.
+        Die Dichten $\rho$ sind Tabellenwerte aus \cite{crc:std-density:water}.
+        }
+    \begin{tabular}{c c c c}
+    \toprule
+    $T$ / \unit{\degreeCelsius} & $\rho$ / \unit{\kilo\gram\per\cubic\meter} & $\Delta h$ / \unit{\meter} & $\sigma$ / \unit{\milli\newton\per\meter} \\ \midrule
+    21 & 998.1 & 0.0338 & 73.44 \\ \midrule
+    30 & 995.6 & 0.033  & 70.32 \\ \midrule
+    40 & 992.2 & 0.032  & 66.19 \\ \midrule
+    50 & 988.0 & 0.032  & 65.91 \\ \midrule
+    60 & 983.2 & 0.031  & 61.73 \\ \midrule
+    71 & 977.7 & 0.030  & 57.55 \\
+    \bottomrule
+    \end{tabular}
+    \label{tbl:surfacetensions_water}
+\end{table}
+
+Die grafische Aufzeichnung der Oberflächenspannungen gegen die Temperatur ist dem Anhang beigefügt.
+
+Der Verlauf ist generell linear, allerdings zeichnet sich ein Knick von \qty{40}{\degreeCelsius} bis \qty{50}{\degreeCelsius} ab.
+Das entspricht nicht den Erwartungen, da nach \textit{Eötvös} der Verlauf durch
+\begin{equation*}
+    \sigma = \qty{0.07275}{\newton\per\meter} \cdot \big( 1 - 0.002 \cdot (T - 291 \unit{K}) \big)
+\end{equation*}
+beschrieben werden kann.
+Es muss sich hier also um einen systematischen Fehler handeln.
+In der grafischen Auswertung wurde ein $1\sigma$-Konfidenzintervall verwendet, welches eben diese Werte als Ausreißer bewertet.
+
+\printbibliography
+
+\newpage
+\appendix
+
+\section{Berechnung der Messunsicherheiten}
+\subsection{Dichtebestimmungen}
+Die maximale Messunsicherheit errechnet sich über die Rechenregel für multiplikative Größen\autocite{skript-physika}, indem die Beträge der relativen Unsicherheiten addiert werden.
+Erneut beispielhaft für die 5~Vol.\% Lösung.
+\begin{align*}
+    \Delta \rho &= \pm \left\{ \left| \frac{0.02}{49.23} \right| + \left| \frac{0.5}{50} \right| \right\} \\
+                &= \pm 1.040\, \text{\%} 
+\intertext{Multiplizieren liefert die absolute Unsicherheit, was hilfreich bei der Angabe von signifikanten Stellen ist.}
+    \Delta \rho &= \pm 1.040\, \text{\%} \cdot 0.9846\, \text{\unit{\gram\per\milli\liter}} \\
+                &= \pm 0.01\, \text{\unit{\gram\per\milli\liter}}
+\end{align*}
+\subsection{Kapillarradius}
+
+Bei der Messung von $\Delta h$ und $h_k$ handelt es sich um eine beidseitige Messung.
+Der Fehler von \qty{\pm 1}{\milli\meter} des Messinstrumentes muss deshalb verdoppelt werden, also \qty{\pm 2}{\milli\meter}.
+\begin{align*}
+    \Delta r_k &= \pm \left\{ \frac{\qty{2}{\milli\meter}}{\qty{33.8}{\milli\meter}} + \frac{\qty{2}{\milli\meter}}{\qty{15}{\milli\meter}} \right\} \\
+               &= \pm 19.2\% \implies \qty{0.8}{\milli\meter} \cdot \pm 19.2\% = \qty{0.8 \pm 0.15}{\milli\meter}\, \text{.}
+\end{align*}
+\subsection{Oberflächenspannung}
+
+Ähnlich zu oben sind $\Delta h$ und $h_k$ mit einem beidseitigen Fehler behaftet. $\rho$ sei fehlerfrei, da es sich hier um Tabellenwerte mit hoher Genauigkeit handelt.
+Fehlerfortpflanzung nach \textit{Gauß}.
+\begin{align*}
+    \Delta \sigma &= \sqrt{ \left(\left(\pdv{\sigma}{\Delta h}\right) \cdot \Delta (\Delta h)\right)^2
+                          + \left(\left(\pdv{\sigma}{h_k}\right) \cdot \Delta h_k\right)^2
+                          + 2 \cdot \left(\left(\pdv{\sigma}{r_k}\right) \cdot \Delta r_k\right)^2
+                          }\\
+                  &= \sqrt{(1 \cdot \qty{2}{\milli\meter})^2 + (1 \cdot \qty{2}{\milli\meter})^2 + 2\cdot (1 \cdot \qty{0.15}{\milli\meter})^2} \\
+                  &= \sqrt{8.045} = 2.83\, \text{.}
+\end{align*}
+
+\includepdf{E3/surfacetension.pdf}
+\includepdf{E3/acetone.pdf}
