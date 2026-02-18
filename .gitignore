@@ -1,3 +1,4 @@
 .latexmk/
 .venv/
 _minted/
+**/data/
