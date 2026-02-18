@@ -1,0 +1,222 @@
+\section{Theorie}
+Ein Kalorimeter umfasst ein eingeschlossenes Volumen in einem Druckbehälter und ein Wasserbad, beide stehen im thermischen Kontakt zueinander.
+Wird nun innerhalb des Volumens eine Probe verbrannt, so kann ein Temperaturanstieg im Wasserbad beobachtet werden.
+Anhand dieses Anstieges können auf Basis von physikalisch-chemischen Zusammenhängen stoffspezifische Kenngrößen berechnet werden.
+Damit die Probe möglichst vollständig verbrennt, wird das Volumen mit Sauerstoff im Überschuss befüllt.
+
+\subsection{Wärmekapazität $c_v$ des Kalorimeters}
+Zur genauen Berechnung ist es unbedingt notwendig, die Wärmekapazität des Kalorimeters zu kennen, da anhand der Temperaturdifferenz die Reaktionsenthalpie berechnet wird.
+Eine kalorimetrische Messung wird generell adiabatisch durchgeführt.
+$\Delta_R U$ sei bekannt, sodass
+\begin{equation}
+    c_v = - \frac{\Delta_R U}{\Delta T}\, \text{.} \label{eqn:heat-capacity}
+\end{equation}
+
+\subsection{Enthalpiebestimmungen}
+Nach Kalibrierung des Kalorimeters kann nun die eigentliche Messung stattfinden.
+Das unterliegende Prinzip ist ein Temperaturanstieg $\Delta T$, anhand dessen die relevanten Größen berechnet werden können.
+\begin{align}
+      \Delta_R U &= c_v \cdot \Delta T \label{eqn:verbrennungsenergie} \\
+    \Delta_R U_m &= \frac{\Delta_R U}{n} \label{eqn:molare-verbrennungsenergie} \\
+    \Delta_R H_m &= \Delta_R U_m + R \cdot T \cdot \Delta \nu \label{eqn:molare-verbrennungsenthalpie} \\
+    \Delta_B H_m &= \nu_{\ch{CO2}} \cdot \Delta_B H_m (\ch{CO2}) + \nu_{\ch{H2O}} \cdot \Delta_B H_m (\ch{H2O}) - \Delta_R H_m \label{eqn:bildungsenthalpie}
+\end{align}
+
+\section{Sicherheitshinweise}
+Die Kalorimeterbombe steht unter sehr hohem Druck.
+Vor dem Öffnen der Bombe ist daher unbedingt sicherzustellen, dass der Druck vollständig über das Ventil abgelassen wurde.
+
+\adjustbox{raise=2em}{\mbox{\stackengine{\Sstackgap}{%
+\textbf{\Large Benzoesäure}}{\danger}{U}{l}{F}{T}{S}}}\hfill
+\ghspic{acid}\ghspic{health} \\
+\ghs*{h}{315}
+\ghs*{h}{318}
+\ghs*{h}{372}
+\ghs*{p}{260}
+\ghs*[dots=Haut]{p}{264}
+\ghs*{p}{280}
+\ghs*{p}{302+352}
+\ghs*{p}{305+351+338}
+\ghs*{p}{314}
+
+\section{Durchführung}
+\subsection{Kalibrierung des Kalorimeters}
+Ein Baumwoll-Zündfaden wurde um den Heizdraht des Kalorimeters gewickelt, sodass die Enden des Fadens auf dem Boden des Probengefäßes liegen.
+Ein Benzoesäure-Pressling von \qty{0.4972}{\gram} wurde auf die Probenaufnahme der Kalorimeterbombe gesetzt, sodass die Probe auf dem Zündfaden lag.
+In den Bombenzylinder wurden \qty{5}{\milli\liter} Wasser eingefüllt.
+Die Probenaufnahme wurde wieder eingesetzt und die Bombe handfest verschlossen.
+
+Die Bombe wurde mit \qty{30}{\bar} Sauerstoff befüllt und in das Kalorimeter zurückgestellt.
+Das Kalorimeter wurde verschlossen.
+Die Temperatur des Wasserbades wurde aufgezeichnet, bis sich ein nahezu linearer Verlauf einstellte.
+Am Kalorimeter wurde der Zündvorgang gestartet.
+Die Temperatur wurde weiter aufgezeichnet, bis der Temperaturverlauf wieder annähernd linear war.
+
+\subsection{Messung eines Reinstoffes und einer Lebensmittelprobe}
+Es wurden \qty{0.5028}{\gram} Bernsteinsäure zwecks Herstellung eines Presslings eingewogen.
+Die Masse des Presslings wurde anschließend bestimmt zu \qty{0.4843}{\gram}.
+Die Probe wurde wie oben beschrieben vermessen.
+
+Eine Lebensmittelprobe (\textit{TicTac}, $m =$ \qty{0.4665}{\gram}) wurde eingewogen und wie oben beschrieben vermessen.
+Hierbei wurden die verwendeten Daten von Gruppe F bereitgestellt.
+
+\section{Ergebnisse und Diskussion}
+
+\subsection{Kalibrierung}
+
+Die Wärmekapazität des Kalorimeters berechnet sich nach \autoref{eqn:heat-capacity} mit $\Delta_R U = $ \qty{- 26.439}{\kilo\joule\per\gram} für Benzoesäure\autocite{skript_t1} und der zusätzlichen Wärme des Zündfadens von \qty{50}{\joule} zu
+\begin{align*}
+    c_v &= - \frac{\Delta_R U}{\Delta T} \\ 
+    c_v &= - \frac{\qty{- 26.439}{\kilo\joule\per\gram}\cdot \qty{0.4972}{\gram} + \qty{50}{\joule}}{\qty{1.29}{\kelvin}} \\
+    c_v &= \qty{10.151 \pm 0.042}{\kilo\joule\per\kelvin}\, \text{.}
+\end{align*}
+
+\subsection{Chemischer Reinstoff (Bernsteinsäure)}
+\subsubsection{Verbrennungsenergie}
+Mit \autoref{eqn:verbrennungsenergie} berechnet sich die Verbrennungsenergie der verwendeten Bernsteinsäure zu
+\begin{align*}
+    \Delta_R U &= c_v \cdot \Delta T \\
+               &= \qty{10.151}{\kilo\joule\per\kelvin} \cdot \qty{0.29}{\kelvin} \\
+               &= \qty{2.944}{\kilo\joule}
+\end{align*}
+
+\subsubsection{Molare Verbrennungsenergie}
+Es wurden \qty{0.4843}{\gram} Bernsteinsäure verbrannt, das entspricht \qty{0.004101}{\mole}.
+\begin{align*}    
+    \Delta_R U_m &= \frac{\Delta_R U}{n} \label{eqn:molare-verbrennungsenergie} \\
+                 &= \frac{\qty{2.944}{\kilo\joule} + \qty{50}{\joule}}{\qty{0.004101}{\mole}} \\
+                 &= \qty{2.93 \pm 0.07}{\kilo\joule}
+\end{align*}
+
+\subsubsection{Molare Verbrennungsenthalpie}
+Bernsteinsäure verbrennt in der Sauerstoffatmosphäre der Kalorimeterbombe nach \autoref{scm:verbrennung-bernsteinsäure} vollständig zu Kohlenstoffdioxid und Wasser.
+Es folgt für die Differenz der stöchiometrischen Faktoren $\Delta \nu$ der Gasteilchen $\Delta \nu = \frac{8+6-9}{2} = 2.5$.
+\begin{scheme}[H]
+    \centering
+    \schemestart
+    \setchemfig{atom sep=1.5em}
+    2 \chemfig[angle increment=30]{HO-[-1](=[:270]O)-[1]-[-1]-[1](=[:90]O)-[-1]OH} + 9 \ch{O2} \ch{ -> } 8 \ch{CO2} + 6 \ch{H2O}
+    \schemestop
+    \caption{Verbrennung von Bernsteinsäure (\ch{C4H6O4}).}
+    \label{scm:verbrennung-bernsteinsäure}
+\end{scheme}
+
+Es folgt somit mit \autoref{eqn:molare-verbrennungsenthalpie} für die molare Verbrennungsenthalpie
+\begin{align*}
+    \Delta_R H_m &= \Delta_R U_m + R \cdot T \cdot \Delta \nu \\ 
+                 &= \qty{730.065}{\kilo\joule\per\mole} + R \cdot \qty{298.15}{\kelvin} \cdot 2.5 \\
+                 &= \qty{736.262}{\kilo\joule\per\mole}
+\end{align*}
+
+\subsubsection{Molare Bildungsenthalpie}
+Mittels den Bildungsenthalpien von Wasser (\qty{-285.98}{\kilo\joule\per\mole}) und Kohlenstoffdioxid (\qty{-393.42}{\kilo\joule\per\mole}) lässt sich die molare Bildungsenthalpie der Probe
+über den Satz von Hess nach \autoref{eqn:bildungsenthalpie} berechnen.
+\begin{align*}
+    \Delta_B H_m &= \nu_{\ch{CO2}} \cdot \Delta_B H_m (\ch{CO2}) + \nu_{\ch{H2O}} \cdot \Delta_B H_m (\ch{H2O}) - \Delta_R H_m \\
+                 &= (4 \cdot \qty{-393.42}{\kilo\joule\per\mole} + 3 \cdot \qty{- 285.98}{\kilo\joule\per\mole} - \qty{736.262}{\kilo\joule\per\mole}) \div 2 \\
+                 &= \qty{-847.7 \pm 18.1}{\kilo\joule\per\mole}
+\end{align*}
+Die experimentell bestimmte molare Bildungsenthalpie stimmt im Rahmen des Fehlers mit dem Literaturwert \qty{823}{\kilo\joule\per\mole}\autocite{crc:std-succinic-acid} überein.
+Abweichungen ergeben sich unter anderem aus dem Ablesefehler der grafischen Auswertung auf Millimeterpapier, da hier der relative Fehler recht groß ist und diese Größe weit am Anfang der Berechnungen einging.
+Somit pflanzt sich der Fehler immer weiter fort und wird verstärkt.
+
+\subsection{Lebensmittelprobe}
+\subsubsection{Verbrennungsenergie}
+Mit \autoref{eqn:verbrennungsenergie} berechnet sich die Verbrennungsenergie der Lebensmittelprobe zu
+\begin{align*}
+    \Delta_R U &= c_v \cdot \Delta T \\
+               &= \qty{10.151}{\kilo\joule\per\kelvin} \cdot \qty{1.21}{\kelvin} \\
+               &= \qty{12.282}{\kilo\joule}
+\end{align*}
+\subsubsection{Brennwert}
+Die Masse der Lebensmittelprobe war $m = \qty{0.4665}{\gram}$.
+Mit der Verbrennungsenergie und der Masse lässt sich so der Brennwert in $\frac{\unit{\kilo\joule}}{\qty{100}{\gram}}$ und $\frac{\unit{\kilo\cal}}{\qty{100}{\gram}}$ berechnen.
+\begin{align*}
+    H_S &= \frac{\qty{12.282}{\kilo\joule}}{\qty{0.4665}{\gram}} \\
+        &= \qty{26.33}{\kilo\joule\per\gram} \\
+        &= (\num{2.633 \pm 0.22}) \frac{\unit{\kilo\joule}}{\qty{100}{\gram}} \\ 
+        &= (\num{0.629 \pm 0.001}) \frac{\unit{\kilo\cal}}{\qty{100}{\gram}} 
+\end{align*}
+
+\section{Zusammenfassung}
+Das Kalorimeter wurde mittels Verbrennung einer bekannten Substanz, hier Benzoesäure, kalibriert.
+Diese Kalibrierung wurde verwendet, um chemisch-physikalische Kenngrößen von Bernsteinsäure zu bestimmen.
+Die berechnete molare Bildungsenthalpie der Bernsteinsäure wurde zu \qty{-847.7 \pm 18.1}{\kilo\joule\per\mole} bestimmt, mit Literaturwerten verglichen und bewertet.
+Eine Lebensmittelprobe wurde ebenfalls kalorimetrisch vermessen und dessen Brennwert wurde zu $(\num{2.633 \pm 0.22}) \frac{\unit{\kilo\joule}}{\qty{100}{\gram}}$ bestimmt.
+
+\newpage
+\printbibliography
+\newpage
+\appendix
+
+\section{Fehlerberechnung}
+\subsection{Kalibrierung}
+
+$c_v$ ist abhängig von $\Delta_R U$, $m$, und $\Delta T$.
+$\Delta_R U$ ist ein Literaturwert und sei fehlerfrei.
+$m$ wurde auf einer Analysenwaage mit vier Nachkommastellen bestimmt, der Fehler ist hier in der letzen Stelle, also \qty{\pm 0.0001}{\gram}.
+$\Delta T$ wurde grafisch bestimmt; das Kalorimeter zeigte zwar vier Nachkommastellen an, die grafische Auswertung stellt allerdings nur zwei dar.
+Hinzu kommt der Ablesefehler auf dem Millimeterpapier, was hier einen Fehler von \qty{\pm 0.005}{\kelvin} bedeutet.
+
+Fehlerrechnung nach der Rechenregel für multiplikative Größen.\autocite{skript-physika}
+\begin{align*}
+    \frac{u_{c_v}}{c_v} &= \pm \left( \frac{u_m}{m} + \frac{u_{\Delta T}}{\Delta T} \right) \\
+                      &= \pm \left( \frac{0.0001}{0.4972} + \frac{0.005}{1.29} \right) \\
+                      &= \pm 4.077 \cdot 10^{-3} \Rightarrow \pm 0.4\% \\
+                      &\implies \qty{10.151}{\kilo\joule\per\kelvin} \cdot 0.4\% = \qty{\pm 0.042}{\kilo\joule\per\kelvin} \\
+                      &= \qty{10.151 \pm 0.042}{\kilo\joule\per\kelvin}
+\end{align*}
+
+\subsection{Reinstoff}
+\subsubsection{Verbrennungsenergie}
+Wie oben.
+\begin{align*}
+    \frac{u_{\Delta_R U}}{\Delta_R U} &= \pm \left( \frac{u_{c_v}}{c_v} + \frac{u_{\Delta T}}{\Delta T} \right) \\
+                                      &= \pm \left( 4.077 \cdot 10^{-3} + \frac{0.005}{0.29} \right) \\
+                                      &= \pm 0.0213 \Rightarrow \pm 2.13\% \\
+                                      &\implies \qty{2.933}{\kilo\joule} \cdot 2.2\% = \qty{\pm 0.0616}{\kilo\joule} \\
+                                      &= \qty{2.93 \pm 0.07}{\kilo\joule}
+\end{align*}
+\subsubsection{Molare Verbrennungsenergie}
+Der Fehler der Stoffmenge fortgepflanzt über den Massenfehler wird vernachlässigbar.
+\begin{align*}
+    \frac{u_{\Delta_R U_m}}{\Delta_R U_m} &= \pm \left( \frac{u_{\Delta_R U}}{\Delta_R U} \right) \\
+                                          &= \pm 0.0213 \\
+                                          &\implies \qty{730.065}{\kilo\joule\per\mole} \cdot 2.2\% = \qty{15.33}{\kilo\joule\per\mole} \\
+                                          &= \qty{730.1 \pm 15.4}{\kilo\joule\per\mole}
+\end{align*}
+\subsubsection{Molare Verbrennungsenthalpie}
+Der Fehler der molaren Verbrennungsenthalpie wird primär gegeben durch den Fehler der molaren Verbrennungsenergie.
+Da die Verbrennungsenthalpie bei $T = \qty{25}{\degreeCelsius}$ berechnet wird, ist diese Abhängigkeit fehlerfrei.
+\begin{align*}
+    \frac{u_{\Delta_R H_m}}{\Delta_R H_m} &= \pm 0.0213 \\
+                                          &\implies \qty{736.262}{\kilo\joule\per\mole} \cdot 2.2\% = \qty{15.68}{\kilo\joule\per\mole} \\
+                                          &= \qty{736.3 \pm 15.7}{\kilo\joule\per\mole}
+\end{align*}
+
+\subsubsection{Molare Bildungsenthalpie}
+Da es sich um die Bildungsenthalpien für Wasser und Kohlenstoffdioxid um Literaturwerte handelt, seien diese als fehlerfrei behandelt.
+Somit ist der Fehler der molaren Bildungsenthalpie ausschließlich abhängig vom Fehler der molaren Verbrennungsenthalpie.
+\begin{align*}
+    \frac{u_{\Delta_B H_m}}{\Delta_B H_m} &= \pm 0.0213 \\
+                                          &\implies \qty{-847.679}{\kilo\joule\per\mole} \cdot 2.2\% = \qty{18.071}{\kilo\joule\per\mole} \\
+                                          &= \qty{-847.7 \pm 18.1}{\kilo\joule\per\mole}
+\end{align*}
+
+\subsection{Lebensmittelprobe}
+\begin{align*}
+    \frac{u_{\Delta_R U}}{\Delta_R U} &= \pm \left( 4.077 \cdot 10^{-3} + \frac{0.005}{1.21} \right) \\
+                                      &= \pm 8.209 \cdot 10^{-3} \\
+                                      &\implies \qty{12.282}{\kilo\joule} \cdot 8.3\% = \qty{0.1}{\kilo\joule} \\
+                                      &= \qty{12.3 \pm 0.1}{\kilo\joule} \\
+    \frac{u_{H_S}}{H_S} &= \pm \left( 8.209 \cdot 10^{-3} + \frac{0.0001}{0.4665} \right) \\
+                        &= \pm 8.209 \cdot 10^{-3} \\
+                        &\implies 2.633 \frac{\unit{\kilo\joule}}{\qty{100}{\gram}} \cdot 8.3\% = 0.216 \frac{\unit{\kilo\joule}}{\qty{100}{\gram}} \\
+                        &= (\num{2.633 \pm 0.22}) \frac{\unit{\kilo\joule}}{\qty{100}{\gram}} \\
+                \intertext{beziehungsweise}
+                        &= (\num{0.629 \pm 0.001}) \frac{\unit{\kilo\cal}}{\qty{100}{\gram}} 
+\end{align*}
+                           
+\includepdf[landscape=true]{T1/Benzoesäure.pdf}
+\includepdf[landscape=true]{T1/Bernsteinsäure.pdf}
+\includepdf[landscape=true]{T1/Lebensmittelprobe.pdf}
