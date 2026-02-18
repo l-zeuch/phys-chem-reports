@@ -1,0 +1,437 @@
+\section{Einleitung}
+Die Elektrochemie ist ein grundlegender Bereich der Physikalischen Chemie, der den Zusammenhang zwischen elektrischer Energie und chemischen Reaktionen untersucht.
+Sie bildet die Grundlage moderner Technologien und ist ein wichtiges Werkzeug zur Analyse von Redoxprozessen.
+Unter den elektrochemischen Methoden ist die Cyclovoltammetrie (CV) besonders vielseitig, um Elektronentransferreaktionen und Stofftransportvorgänge zu untersuchen.
+
+Die CV ist ein Messverfahren, bei dem das Potential einer Elektrode linear gesteigert wird.
+Nachdem das Potential ein gesetztes Maximum erreicht hat, wird dieses nun wieder bis zum Ausgangspotential herabgesetzt, es wird also eine Dreieckspannung erzeugt.
+Dabei wird eine Drei-Elektroden-Zelle verwendet: Referenz-, Reaktions-, und Gegenelektrode.
+Zwischen Reaktions- und Referenzelektrode wird das Potential gemessen, zwischen Reaktions- und Gegenelektrode der Strom.
+Es wird der Strom gegen das Potential aufgetragen und man erhält einen zyklischen Verlauf.
+Die Messung wird in der Regel so lange wiederholt, bis die voltammetrische Kurve einen zyklischen Gleichgewichtszustand erreicht.
+
+Dieses Verfahren wird besonders zur Untersuchung von Redoxsystemen verwendet, um beispielsweise die Anwesenheit von Zwischenstufen oder auch die Umkehrbarkeit einer Reaktion zu bestimmen.
+In der Lebensmittelchemie findet die Cyclovoltammetrie Anwendung zur Bestimmung der antioxidativen Kapazität (Oxygen Radical Absorbance Capacity, \textit{ORAC}) von Nahrung,\autocite{chevion2000antioxidant}$^, $\autocite{brcanovic2013cyclic}
+da insbesondere niedermolekulare Antioxidanzen von besonderer Bedeutung sind, weil diese vermutlich das Risiko für Krebs\autocite{sohal1996oxidative}, Schlaganfälle\autocite{leinonen2000low},
+und neurodegenerative Krankheiten\autocite{gilbert2000fifty} senken.
+
+In diesem Versuch wird das elektrochemische Verhalten von Ferrocen in \qty{0.1}{\mol\per\liter} \ch{TBAF}/Acetonitril mittels CV untersucht.
+Es werden wichtige Redox-Parameter bestimmt, die Abhängigkeit des Stroms von der Scanrate untersucht, und die Reversibilität der Reaktion geprüft sowie mit theoretischen Erwartungen verglichen.
+Ferner wird der Diffusionskoeffizent von Ferrocen berechnet und mit der Literatur abgeglichen, um die Qualität der Messungen zu bewerten.
+
+Das System Ferrocen/Ferrocenium (\ch{Fc}/\ch{Fc+}) ist ein gut untersuchtes Ein-Elektronen-Redoxpaar und dient in der Elektrochemie häufig als Referenzsystem\autocite{elgrishi2018practical}.
+Daher eignet es sich besonders gut für einen Einführungsversuch in die Cyclovoltammetrie.
+
+\newpage
+\section{Theorie}
+Das Elektrodenpotential wird dreieckförmig verändert, der Stromverlauf zeigt die entsprechenden Oxidations- und Reduktionsprozesse.
+
+Während des Vorwärtsscans wird das Potential positiver, ab einem bestimmten Punkt wird das Ferrocen an der Reaktionselektrode nach \autoref{sch:ferrocen_redox} zu Ferrocenium oxidiert.
+Der Strom steigt weiter, bis durch Diffusion die Konzentration der Reaktionsteilnehmer an der Elektrodenoberfläche begrenzt wird.
+Dies führt zum anodischen Spitzenstrom $i_{pa}$.
+Nach Umkehr des Scans wird das Potential negativer, das zuvor erzeugte Ferrocenium wird wieder zu Ferrocen reduziert, es wird der kathodische Spitzenstrom $i_{pc}$ erhalten.
+\begin{scheme}[H]
+    \centering
+    \schemestart
+    \ch{Fe(C5H5)2} \ch{ <=> } \ch{Fe(C5H5)2^{+}} + \ch{e^{-}}
+    \schemestop
+    \caption{Redoxreaktion von Ferrocen (\ch{Fc}) zu Ferocenium (\ch{Fc+}).}
+    \label{sch:ferrocen_redox}
+\end{scheme}
+
+Nach Randles-\v{S}ev\v{c}ik ist der maximale Strom $i_p$ für ein reversiblen, diffusionsbegrenzten Prozess bei $T= \qty{25}{\degreeCelsius}$ gegeben durch
+\begin{equation}
+    i_p = (\num{2.69e5}) n^{3/2} A D^{1/2} C v^{1/2} \label{eq:randles_sevcik}
+\end{equation}
+wobei $n$ die Anzahl der übertragenen Elektronen, $A$ die Elektrodenoberfläche in \unit{\centi\meter\squared}, $D$ der Diffusionskoeffizient in \unit{\centi\meter\squared\per\second},
+$C$ die Konzentration in \unit{\mole\per\centi\meter\cubed} und $v$ die Scanrate in \unit{\volt\per\second} ist.
+
+Durch Auftragung von $i_{pa}$ gegen $v^{1/2}$ kann der Diffusionskoeffizient $D$ mittels einer linearer Regression bestimmt werden.
+
+Für eine reversible Reaktion bei Ein-Elektronen-Systemen ($n = 1$) gilt, dass die Differenz zwischen Oxidations- und Reduktionspotential $\Delta E_p$ bei Raumtemperatur \qty{59}{\milli\volt} beträgt.
+Dieser Zusammenhang ergibt sich aus der vereinfachten Nernst-Gleichung bei $T = \qty{298.15}{\kelvin}$, und der Tatsache, dass bei reversiblen Reaktionen die Konzentrationen der oxidierten und reduzierten Spezies am Scheitelpunkt des Stroms gleich sind.
+\begin{align}
+    \Delta E &= E^0 + \frac{\qty{59}{\milli\volt}}{n} \cdot \underbrace{\log \mleft( \frac{c_{\text{ox}}}{c_{\text{red}}} \mright)}_{\text{= 1}} \\
+\intertext{Ferner ist das Verhältnis der Stromstarken ungefähr gleich.}
+        1 &\approx \frac{i_{pa}}{i_{pc}} \\
+\intertext{Zusätzlich gilt für das formelle Potential}
+        E^{0'} &= \frac{E_{pa} + E_{pc}}{2}
+\end{align}
+Während der Reaktion wandern die gelösten Ionen ständig zwischen den Elektroden.
+Um diese Ionenwanderung zu unterstützen, wird der Lösung ein Salz, das Stützelektrolyt, beigefügt.
+In diesem Versuch ist dieses Stützelektrolyt Tetra-n-butylammoniumfluorid (\ch{TBAF}), ein quartäres Ammoniumsalz.
+\begin{figure}[H]
+    \centering
+    \chemfig[angle increment=30, atom sep=1.25em]{
+        \ch{N+}(% right
+            -[-1]-[-3]-[-1]-[-3]
+        )
+        ( % bottom
+            -[-4]-[-6]-[-4]-[-6]
+        )
+        ( % left
+            -[-7]-[-9]-[-7]-[-9]
+        )
+        (%top
+            -[2]-[0]-[2]-[0]
+        )
+    }
+    \chemfig{\ch{F+}}
+    \caption{Struktur von Tetra-n-butylammoniumfluorid (TBAF).}
+\end{figure}
+Ein reversibles System wird dadurch ausgezeichnet, dass die untersuchte Substanz nach der Reduktion stabil ist, also anschließend wieder rückoxidiert werden kann.
+Spezifisch angewandt auf die Elektrochemie bedeutet das, dass der Elektronentransfer eine geringe Barriere aufweist, sich also schnell ein Gleichgewichtszustand einstellen kann.
+Dies zeichnet sich durch einen kleinen Unterschied zwischen den Oxidations- und Reduktionspotentialen ($\Delta E_p$) aus, sowie durch ähnliche Stromstärken für Oxidation und Reduktion.
+
+Wasser als Löungsmittel ist für die Cyclovoltammetrie nur bedingt geeignet, da es zur Elektrolyse kommen kann, was die Messung beeinflusst.
+Insbesondere bei höheren Potentialen kann es zur Sauerstoffentwicklung an der Anode kommen und somit zu unerwünschten Oxidationsprozessen, gegebenenfalls sogar zur Zerstörung der Elektrode beziehungsweise der Probe.
+
+\newpage
+
+Zur Auswertung der Daten, insbesondere zur Bestimmung der Spitzenströme $i_{pa}$ und $i_{pc}$, ist es erforderlich, den kapazitiven Anteil des Stroms bei der Umkehr des Potentials zu berücksichtigen.
+Dies wird durch eine angenäherte lineare Basislinie im Bereich nach den Umkehrpunkten des Potentials erreicht, die dann vom gemessenen Strom subtrahiert wird.
+Diese Basislinien sind in \autoref{fig:cv_example} (sowie allen weiteren Voltammogrammen) als rote beziehungsweise graue Linie dargestellt.
+
+Dieser Zusammenhang ist dadurch zu erklären, dass sich an der Elektrodenoberfläche Elektronen ansammeln, die bei Umkehr des Potentials zunächst entfernt werden müssen, bevor die eigentliche Redoxreaktion stattfinden kann.
+Im Grunde agiert die Elektrode also wie ein Kondensator, der während des Scans aufgeladen wird und bei Potentialumkehr entladen wird.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{E4/plots/100mVs.png}
+    \caption{Beispiel eines Cyclovoltammogramms (\qty{100}{\milli\volt\per\second}) mit Markierung der relevanten Parameter.}
+    \label{fig:cv_example}
+\end{figure}
+
+\newpage
+\section{Durchführung}
+\subsection{Sicherheitshinweise}
+\begin{itemize}
+    \item Acetonitril ist giftig und leicht entzündlich: Haut- und Augenkontakt vermeiden. 
+    \item Lösungen im vorgesehenen Abfallbehälter entsorgen.
+    \item Ferrocen-Lösung ist wenig gefährlich, sollte aber vorsichtig behandelt werden.
+    \item Mit Standard-Schutzausrüstung arbeiten (Laborkittel, Handschuhe, Schutzbrille).
+\end{itemize}
+
+Eine Glaskohlenstoff-Elektrode ($d = \qty{3.0}{\milli\meter}, A = \qty{0.071}{\cm\squared}$) wurde poliert, gespült, und getrocknet.
+Es wurde eine \ch{Ag}/\ch{Ag+}-Referenzelektrode verwendet.
+
+Es wurden \qty{15}{\milli\liter} einer \qty{1}{\milli\mol\per\liter} Ferrocen-Lösung in \qty{0.1}{\mol\per\liter} TBAF / Acetonitril in die Drei-Elektroden-Zelle gefüllt.
+Der Potentionstat zur Erzeugung der Dreieckspannung wurde auf einen Potentialbereich von \qty{-0.2}{\volt} bis \qty{0.8}{volt}, ein Startpotential von \qty{0.0}{\volt},
+und einer Scanrate von \qty{10}{\milli\volt\per\second} eingestellt.
+Die Messung wurde gestartet und aufgezeichnet.
+
+Die Messung wurde mit Scanraten von 25, 50, 75, 100, 150, 200, 300, 400, und \qty{500}{\milli\volt\per\second} wiederholt.
+Zusätzlich wurde eine Messung bei \qty{100}{\milli\volt\per\second} aufgenommen, während die Lösung gerührt wurde.
+
+\section{Ergebnisse und Diskussion}
+Zur Auswertung und Darstellung der Daten wurde Python 3.14 mit den externen Bibliotheken NumPy\autocite{numpy} und Matplotlib\autocite{matplotlib} verwendet.
+
+Zunächst veranschaulicht \autoref{fig:100mVs_comparison} den Einfluss des Rührens auf das Cyclovoltammogramm bei einer Scanrate von \qty{100}{\milli\volt\per\second}.
+Es ist deutlich zu erkennen, dass das Rühren einen erheblichen Einfluss auf den Verlauf des Cyclovoltammogramms hat, insbesondere im Bereich des maximalen Potentials.
+Um ein gutes Cyclovoltammogramm zu erhalten, ist es wichtig, durch die Diffusion der Reaktenden begrenzt zu sein, was durch Rühren gestört wird.
+Ferner wird durch den ungenauen Potentialverlauf bei gerührter Lösung die Bestimmung der Redox-Parameter erschwert, zu erkennen an den größeren Unsicherheiten der kapazitiven Basislinie.
+
+In der weiteren Auswertung werden daher nur die Messungen ohne Rühren berücksichtigt.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{E4/plots/100mVs_stirred.png}
+        \caption{Gerührte Lösung.}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{E4/plots/100mVs.png}
+        \caption{Ungerührte Lösung.}
+    \end{subfigure}
+    \caption{Vergleich Cyclovoltammogramme bei \qty{100}{\milli\volt\per\second} mit und ohne Rühren.}
+    \label{fig:100mVs_comparison}
+\end{figure}
+
+\begin{table}[H]
+    \begin{adjustwidth}{-2.2cm}{-1cm}
+    \setlength{\tabcolsep}{4pt}
+    \centering
+    \caption{Gemessene und berechnete Redox-Parameter von Ferrocen bei verschiedenen Scanraten.}
+    \begin{tabular}{c c c c c c c c}
+        \toprule
+        Scanrate & $E_{pa}$ & $E_{pc}$ & $\Delta E_p$ & $E^{0'}$ & $i_{pa}$ & $i_{pc}$ & $\frac{i_{pa}}{i_{pc}}$ \\ \midrule
+        \unit{\milli\volt\per\second} & \unit{\milli\volt} & \unit{\milli\volt} & \unit{\milli\volt} & \unit{\milli\volt} & \unit{\micro\ampere} & \unit{\micro\ampere} & \\ \midrule
+        10 & \num{464.5 +- 2.4} & \num{393.9 +- 1.5} & \num{70.6 +- 3.9} & \num{429.3 +- 13.5} & \num{10.27 +- 0.12} & \num{10.29 +- 0.8} & \num{0.998 +- 0.08} \\ \midrule
+        25 & \num{468.4 +- 0.01} & \num{401.4 +- 0.01} & \num{66.93 +- 0.01} & \num{434.9 +- 12.7} & \num{15.05 +- 0.09} & \num{14.1 +- 0.4} & \num{1.06 +- 0.03} \\ \midrule
+        50 & \num{468.41 +- 0.01} & \num{397.6 +- 1.3} & \num{70.8 +- 1.3} & \num{433.0 +- 13.4} & \num{20.6 +- 0.1} & \num{19.5 +- 0.1} & \num{1.053 +- 0.007} \\ \midrule
+        75 & \num{473.34 +- 0.01} & \num{396.39 +- 0.01} & \num{76.95 +- 0.02} & \num{434.9 +- 14.6} & \num{24.6 +- 0.3} & \num{23.7 +- 0.2} & \num{1.04 +- 0.02} \\ \midrule
+        100 & \num{463.49 +- 0.01} & \num{391.51 +- 0.02} & \num{71.98 +- 0.04} & \num{427.5 +- 13.6} & \num{28.8 +- 0.5} & \num{27.8 +- 0.2} & \num{1.04 +- 0.02} \\ \midrule
+        150 & \num{463.48 +- 0.01} & \num{388.9 +- 1.5} & \num{74.5 +- 1.5} & \num{426.2 +- 14.1} & \num{34.8 +- 0.7} & \num{33.6 +- 0.3} & \num{1.04 +- 0.02} \\ \midrule
+        200 & \num{463.55 +- 0.02} & \num{386.34 +- 0.03} & \num{77.21 +- 0.04} & \num{424.9 +- 14.6} & \num{39.8 +- 0.7} & \num{38.6 +- 0.3} & \num{1.03 +- 0.02} \\ \midrule
+        300 & \num{464.8 +- 1.2} & \num{383.8 +- 1.5} & \num{81.0 +- 2.7} & \num{424.3 +- 15.4} & \num{48.3 +- 0.8} & \num{46.9 +- 0.3} & \num{1.03 +- 0.02} \\ \midrule
+        400 & \num{468.39 +- 0.02} & \num{381.47 +- 0.02} & \num{86.93 +- 0.04} & \num{424.9 +- 16.5} & \num{55.4 +- 0.9} & \num{54.2 +- 0.4} & \num{1.02 +- 0.02} \\ \midrule
+        500 & \num{468.42 +- 0.01} & \num{377.7 +- 1.3} & \num{90.7 +- 1.3} & \num{423.1 +- 17.2} & \num{62.0 +- 1.2} & \num{60.9 +- 0.4} & \num{1.02 +- 0.02} \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:redox_parameters}
+    \setlength{\tabcolsep}{6pt}
+    \end{adjustwidth}
+\end{table}
+\subsection{Redox-Parameter und Reversibilität}
+
+\autoref{tab:redox_parameters} fasst die gemessenen und berechneten Redox-Parameter von Ferrocen bei den verschiedenen Scanraten zusammen.
+Es ist zu erkennen, dass die Verhältnisse der Spitzenströme $i_{pa}$ und $i_{pc}$ nahe bei 1 liegen, was auf eine reversible Reaktion hinweist.
+Allerdings weicht die Differenz der Potentiale $\Delta E_p$ deutlich von dem erwarteten Wert von \qty{59}{\milli\volt} ab, insbesondere bei höheren Scanraten.
+Dies könnte auf kinetische Einschränkungen oder ohmsche Verluste im System hinweisen, die bei höheren Scanraten stärker ins Gewicht fallen, weil die Reaktionszeit kürzer ist.
+Aus der Auftragung der $\Delta E_p$-Werte gegen die Scanrate (siehe Anhang, oben) verdetlicht sich dieser Trend.
+
+Ferner wurde die Temperatur der Lösung nicht kontrolliert, was ebenfalls zu Abweichungen führen kann.
+So ist davon auszugehen, dass die Lösung nicht bei \qty{25}{\degreeCelsius} vorlag, was die Nernst-Gleichung beeinflusst.
+
+Da die Verhältnisse der Spitzenströme $i_{pa}$ und $i_{pc}$ jedoch nahe bei 1 liegen, und die Form der Cyclovoltammogramme typisch für reversible Reaktionen ist,
+kann insgesamt von einer reversiblen Redoxreaktion ausgegangen werden.
+
+\subsection{Diffusionskoeffizient}
+Zur Bestimmung des Diffusionskoeffizienten $D$ wurde der anodische Spitzenstrom $i_{pa}$ gegen die Quadratwurzel der Scanrate $v^{1/2}$ aufgetragen (siehe Anhang, unten).
+Die lineare Regression liefert eine Steigung von $m = \num{2.779 +- 0.03} \, \unit{\micro\ampere\per(\milli\volt\per\second)^{1/2}}$.
+Nach Umstellung der Randles-\v{S}ev\v{c}ik-Gleichung (\autoref{eq:randles_sevcik}) ergibt sich für den Diffusionskoeffizienten $D$,
+mit einer Elektrodenfläche $A = \qty{0.071}{\cm\squared}$ und Konzentration $C = \qty{1e-4}{\mol\per\cm\cubed}$ für einen Ein-Elektronen-Prozess ($n = 1$):
+\begin{align*}
+    i_p &= (\num{2.69e5}) n^{3/2} A D^{1/2} C v^{1/2} \tag{\ref{eq:randles_sevcik} Wdh.} \\
+    D^{1/2} &= \frac{i_p}{(\qty{2.69e5}{\coulomb\per\mol\per(\volt)^{1/2}}) A C} \\
+    D &= \mleft( \frac{i_p}{(\qty{2.69e5}{\coulomb\per\mol\per(\volt)^{1/2}}) A C} \mright)^2 \\
+      &= \mleft( \frac{m}{(\qty{2.69e5}{\coulomb\per\mol\per(\volt)^{1/2}}) \cdot \qty{0.071}{\cm\squared} \cdot \qty{1e-4}{\mol\per\cm\cubed}} \mright)^2 \\
+      &= \mleft( \frac{\qty{2.779 +- 0.03e-6}{\ampere\per(\milli\volt\per\second)^{1/2}}}{\qty{2.69e5}{\coulomb\per\mol\per(\volt)^{1/2}} \cdot \qty{0.071}{\cm\squared} \cdot \qty{1e-4}{\mol\per\cm\cubed}} \mright)^2 \\
+    D &= \qty{2.14 +- 0.05e-5}{\cm\squared\per\second}
+\end{align*}
+
+Dieser Wert stimmt sehr gut mit dem Literaturwert von $D_{lit} = \qty{2.12e-5}{\cm\squared\per\second}$\autocite{wang2010measurement} überein, was auf eine hohe Qualität der Messungen hinweist.
+
+\subsection{Einfluss der Scanrate}
+Die Abbildungen \ref{fig:10mVs} bis \ref{fig:500mVs} zeigen Cyclovoltammogramme bei den verschiedenen Scanraten.
+Es ist zu beobachten, dass mit steigender Scanrate die Peaks enger zusammenrücken und die Spitzenströme zunehmen.
+Dies ist darauf zurückzuführen, dass bei höheren Scanraten die Zeit für die Diffusion der Reaktanden zur Elektrode kürzer ist, was zu höheren Konzentrationsgradienten und somit zu höheren Strömen führt.
+
+Darüber hinaus indiziert der Rückgang der Differenz $\Delta E_p$ mit steigender Scanrate einen Spannungsabfall im System, was auf ohmsche Verluste und kinetische Einschränkungen hinweist.
+Da nun mehr Strom fließen muss, um die gleiche Menge an Elektronen zu übertragen, steigt der Einfluss von Widerständen im System, das System heizt sich infolgedessen leicht auf.
+
+Dieses Aufheizen könnte auch eine Erklärung für die Abweichung der gemessenen $\Delta E_p$-Werte von dem theoretischen Wert von \qty{59}{\milli\volt} sein, da die Nernst-Gleichung temperaturabhängig ist.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{E4/plots/10mVs.png}
+    \caption{Cyclovoltammogramm bei \qty{10}{\milli\volt\per\second}.}
+    \label{fig:10mVs}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{E4/plots/100mVs.png}
+    \caption{Cyclovoltammogramm bei \qty{100}{\milli\volt\per\second}.}
+    \label{fig:100mVs}
+\end{figure}
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{E4/plots/500mVs.png}
+    \caption{Cyclovoltammogramm bei \qty{500}{\milli\volt\per\second}.}
+    \label{fig:500mVs}
+\end{figure}
+
+\section{Zusammenfassung}
+In diesem Versuch wurde das elektrochemische Verhalten von Ferrocen in \qty{0.1}{\mol\per\liter} TBAF/Acetonitril mittels Cyclovoltammetrie untersucht.
+Die Redox-Parameter wurden bestimmt, und die Reversibilität der Reaktion wurde bedingt bestätigt.
+Der Diffusionskoeffizient von Ferrocen wurde zu $D = \qty{2.14 +- 0.05e-5}{\cm\squared\per\second}$ berechnet, was sehr gut mit dem Literaturwert von $D_{lit} = \qty{2.12e-5}{\cm\squared\per\second}$\autocite{wang2010measurement} übereinstimmt.
+Der Einfluss der Scanrate auf die Cyclovoltammogramme wurde analysiert, wobei höhere Scanraten zu höheren Spitzenströmen und einer Verringerung der Differenz der Oxidations- und Reduktionspotentiale führten.
+
+\newpage
+\printbibliography
+\newpage
+
+\appendix
+\section{Fehlerrechnung}
+\subsection{Diffusionskoeffizient}
+Der Diffusionskoeffizient $D$ wurde durch eine lineare Regression der anodischen Spitzenströme $i_{pa}$ gegen die Quadratwurzel der Scanrate $v^{1/2}$ bestimmt.
+Der Fehler der Steigung ist die halbe Spanne der Extremwerte.
+\begin{align*}
+    \Delta m &= \frac{|m_{max} - m_{min}|}{2} \\
+    \Delta m &= \frac{2.8085 - 2.75}{2} \\
+             &= 0.02925 \approx \qty{0.03e-6}{\ampere\per(\milli\volt\per\second)^{1/2}}
+\end{align*}
+
+Der Fehler des Diffusionskoeffizienten $D$ ergibt sich durch die Gaußsche Fehlerfortpflanzung:
+\begin{align*}
+    \Delta D &= \sqrt{\mleft( \pdv{D}{m} \Delta m \mright)^2} \\
+    \pdv{D}{m} &= 2 \cdot \frac{m}{(2.69e5)AC^2} \\
+    \Delta D &= (2 \cdot \frac{\qty{2.779e-6}{\ampere\per(\milli\volt\per\second)^{1/2}}}{(2.69e5)(0.071)(1e-4)^2} \cdot \qty{0.03e-6}{\ampere\per(\milli\volt\per\second))^{1/2}} \\
+            &= \qty{0.05e-5}{\cm\squared\per\second}
+\end{align*}
+
+\section{Programmcode}
+In diesem Abschnitt sei der verwendete Code nur auszugsweise diskutiert.
+Triviale Funktionen wie das Einlesen von CSV-Dateien, Bestimmung von Extrema, oder das Plotten von Graphen werden hier nicht erläutert.
+
+Um einen Bericht und Plot für eine Scanrate von beispielsweise \qty{100}{\milli\volt\per\second} zu erzeugen, wird das Skript wie folgt aufgerufen:
+\begin{minted}{bash}
+    \$ python3 plot 100 --plot
+    (Ausgabe von Redox-Parametern)
+\end{minted}
+
+Das Programm verwendet Datenklassen, um die verschiedenen Ergebnisse besser zu strukturieren, ohne dass viele einzelne Rückgabewerte verwendet werden müssen oder Maps mit unübersichtlichen Schlüssel-Wert-Paaren.
+
+\subsection{Aufteilung der Messdaten in Zyklen}
+Zur sinnvollen Berechnung der Spitzenströme werden zunächst die einzelnen Durchläufe des Messprogramms gesucht und extrahiert.
+Da unter Umständen das Signal nahe des linkseitigen Nulldurchgangs des Potentials verrauscht ist, wird zunächst eine Glättung des Potentialsignals über ein ausreichend großes Fenster durchgeführt.
+Anschlißend werden die Nulldurchgänge des geglätteten Signals gesucht, und nur solche berücksichtigt, die einen Mindestabstand zueinander aufweisen.
+Dieses Verfahren lief am gesamten aufgezeichneten Datensatz zuverlässig.
+
+\newpage
+\begin{minted}{python}
+def find_runs(
+    potentials: Sequence,
+    currents: Sequence
+) -> Tuple[List[List[float]], List[List[float]]]:
+    pot_arr = np.asarray(potentials, dtype=float)
+    n = len(pot_arr)
+    if n == 0:
+        return [], []
+
+    window = 11 if n >= 11 else (5 if n >= 5 else 3)
+    if window % 2 == 0:
+        window += 1
+
+    kernel = np.ones(window) / window
+    smoothed = np.convolve(pot_arr, kernel, mode="same")
+        candidate_crossings: List[int] = [
+        i for i in range(1, n) if (smoothed[i - 1] < 0 and smoothed[i] >= 0)
+    ]
+
+    min_sep = max(5, window)
+    crossings: List[int] = []
+    last = -min_sep * 2
+    for idx in candidate_crossings:
+        if idx - last >= min_sep:
+            crossings.append(idx)
+            last = idx
+
+    splits: List[Tuple[int, int]] = []
+    start = 0
+    for idx in crossings:
+        splits.append((start, idx + 1))
+        start = idx
+    splits.append((start, n))
+
+    potentials_runs = _apply_splits(potentials, splits)
+    currents_runs = _apply_splits(currents, splits)
+    return potentials_runs, currents_runs
+\end{minted}
+
+\newpage
+
+Der Fehler der Mittelwerte wird als Standardfehler berechnet:
+\begin{minted}{python}
+def _sem(data: Sequence[float]) -> float:
+    """Return standard error of the mean (s / sqrt(n)). 0.0 for n <= 1."""
+    n = len(data)
+    if n <= 1:
+        return 0.0
+    return statistics.stdev(data) / math.sqrt(n)
+\end{minted}
+
+Diese Funktion wird auch von anderen Routinen zur Fehlerberechnung verwendet.
+
+\subsection{Basislinienkorrektur}
+Um die Spitzenströme korrekt zu bestimmen, wird der kapazitive Anteil des Stroms durch eine lineare Basislinie approximiert und vom gemessenen Strom subtrahiert.
+Hierzu werden die Datenpunkte in einem Bereich nach dem Potentialumkehrpunkt verwendet, um eine lineare Regression durchzuführen, unter Berücksichtigung der Sweep-Richtung.
+\begin{minted}{python}
+def _fit_linear_window(
+    pot_run: Sequence[float],
+    cur_run: Sequence[float],
+    lo: float,
+    hi: float,
+    direction: str,
+) -> Tuple[float | None, float | None, float | None, np.ndarray]:
+    """Fit y = m x + b on points with lo <= x <= hi, filtered by sweep direction."""
+    pot_arr = np.asarray(pot_run, dtype=float)
+    cur_arr = np.asarray(cur_run, dtype=float)
+
+    if len(pot_arr) < 2:
+        return None, None, None, np.array([])
+
+    # [...]
+
+    m, b = np.polyfit(x_used, y_used, 1)
+    y_pred = m * x_used + b
+    ss_res = float(np.sum((y_used - y_pred) ** 2))
+    ss_tot = float(np.sum((y_used - np.mean(y_used)) ** 2))
+    r2 = 1.0 - ss_res / ss_tot if ss_tot > 0 else 1.0
+    return float(m), float(b), r2, x_used
+\end{minted}
+
+Die eigentliche Korrektur findet dann durch Subtraktion der Basislinie vom gemessenen Strom statt, unter Berücksichtigung der Unsicherheiten der Regressionsparameter.
+\begin{minted}{python}
+def analyze_peaks(
+    extremas: ExtremaStats,
+    fits: Dict[str, FitWindowResult]
+) -> PeakAnalysis:
+    out = # [...]
+    # Forward (anodic) peak vs forward fit
+    fwd = fits.get("forward")
+    if (
+        fwd and fwd.avg.slope is not None 
+        and fwd.avg.intercept is not None
+        and out.i_pa_raw is not None
+    ):
+        m = fwd.avg.slope
+        b = fwd.avg.intercept
+        sigma_m = fwd.avg.slope_sem or 0.0
+        sigma_b = fwd.avg.intercept_sem or 0.0
+        x_pa = extremas.avg_max_pot
+        fit_pa = m * x_pa + b
+        out.fit_at_pa = fit_pa
+        diff_pa = out.i_pa_raw - fit_pa
+        out.i_pa_bg = float(np.abs(diff_pa))
+        var_pa = (sigma_I_pa ** 2) + (x_pa * sigma_m) ** 2
+                    + (m * sigma_x_pa) ** 2 + (sigma_b ** 2)
+        out.i_pa_bg_err = float(np.sqrt(var_pa)) if var_pa > 0 else 0.0
+    # [...]
+    return out
+\end{minted}
+
+\subsection{Berichte und Plots}
+Zur Erzeugung der Plots wird Matplotlib verwendet.
+Für eine übersichtliche Darstellung der Ergebnisse als Textausgabe werden die einzelnen berechneten Resultate (Regressionen, Peak-Analysen, etc.) in tabellarischer Form ausgegeben.
+Es wird für die jeweilige Scanrate ein eigener Bericht generiert, der die wichtigsten Parameter zusammenfasst.
+\begin{minted}{text}
+Report for scanrate 300 mV/s 
+  Detected 4 runs.
+
+=== Extrema Summary ===
+  Run 1: max = 50.04 µA at 468.35 mV | min = -37.91 µA at 386.50 mV
+  Run 2: max = 48.40 µA at 463.48 mV | min = -38.49 µA at 381.34 mV
+  Run 3: max = 47.81 µA at 463.65 mV | min = -38.61 µA at 386.17 mV
+  Run 4: max = 47.54 µA at 463.80 mV | min = -38.66 µA at 381.10 mV
+  Avg Max Current: 48.45 ± 0.56 µA at 464.82 ± 1.18 mV
+  Avg Min Current: -38.42 ± 0.17 µA at 383.78 ± 1.48 mV
+
+=== Analysis Report ===
+  Scanrate: 300 mV/s
+  Max current potential (anodic): 464.82 ± 1.18 mV
+  Min current potential (cathodic): 383.78 ± 1.48 mV
+  ΔE (max - min): 81.04 ± 2.66 mV
+  Halfway potential: 424.30 ± 15.34 mV
+  i_pa (background-corrected): 48.254 ± 0.817 µA
+  i_pc (background-corrected): 46.997 ± 0.264 µA
+  i_pa / i_pc: 1.027 ± 0.018
+
+=== Linear fit: forward ===
+  Window: [0, 200] mV (dir: pos)
+  Run 1: slope = 0.0051 µA/mV, intercept = -0.3061 µA, R² = 0.4524
+  Run 2: slope = 0.0047 µA/mV, intercept = -2.2565 µA, R² = 0.9298
+  Run 3: slope = 0.0048 µA/mV, intercept = -2.7104 µA, R² = 0.9854
+  Run 4: slope = 0.0047 µA/mV, intercept = -2.8868 µA, R² = 0.9989
+  Avg: slope = 0.0048 ± 0.0001 µA/mV, intercept = -2.0400 ± 0.5930 µA
+
+=== Linear fit: reverse ===
+  Window: [600, 700] mV (dir: neg)
+  Run 1: slope = 0.0171 µA/mV, intercept = 2.7872 µA, R² = 0.9990
+  Run 2: slope = 0.0161 µA/mV, intercept = 2.4089 µA, R² = 0.9991
+  Run 3: slope = 0.0158 µA/mV, intercept = 2.2238 µA, R² = 0.9992
+  Run 4: slope = 0.0156 µA/mV, intercept = 2.1011 µA, R² = 0.9988
+  Avg: slope = 0.0161 ± 0.0003 µA/mV, intercept = 2.3802 ± 0.1497 µA
+\end{minted}
+
+\includepdf[pages=-]{E4/plot.pdf}

@@ -1,0 +1,12 @@
+[project]
+dependencies  [
+    "matplotlib",
+    "numpy",
+]
+
+[tool.pyright]
+venvPath = '.'
+venv = '.venv'
+exclude = ['.venv']
+
+
