@@ -1,0 +1,48 @@
+\ProvidesPackage{assets/styles/fonts}
+
+% Dokumentensprache auf Deutsch.
+%\usepackage[utf8]{inputenc} % Not needed with LuaLaTeX, which is what we're using.
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{microtype}
+
+% Uni Bremen Corporate Design Font.
+% I thank the internet for WOFF2 extraction, conversion, and those "designers" for literally just slanting the font rather than creating a proper italics one. lmao
+% Math Mode remains untouched, I believe the LaTeX default looks quite good.
+\usepackage[no-math]{fontspec}
+\setsansfont{SharpSans}[
+    Path = ./assets/fonts/,
+    Extension = .ttf,
+    BoldFont = *-Bold,
+    ItalicFont = *-Italic,
+    BoldItalicFont = *-BoldItalic
+]
+\usepackage{luacode}
+\begin{luacode}
+local function embedfull(tfmdata)
+    tfmdata.embedding = "full"
+end
+
+luatexbase.add_to_callback("luaotfload.patch_font", embedfull, "embedfull")
+\end{luacode}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Abstand von Absätzen, aber keinen zusätzlichen Abstand zu \section etc.
+\RedeclareSectionCommand[
+  beforeskip=1sp,
+  afterskip=1sp,
+]{section}
+\RedeclareSectionCommand[
+  beforeskip=1sp,
+  afterskip=1sp,
+]{subsection}
+\RedeclareSectionCommand[
+  beforeskip=1sp,
+  afterskip=1sp,
+]{subsubsection}
+
+% Kein Texteinzug von Absätzen.
+\parindent0pt
+% kein Abstand zwischen Auflistungen
+\usepackage{enumitem}
+\setlist{noitemsep}

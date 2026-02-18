@@ -1,0 +1,128 @@
+\documentclass[a4paper, 11pt, parskip=full, DIV=12]{scrartcl}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXPERIMENT CONFIGURATION %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% What is the identifier of the experiment?
+% This is used in the title, headers, and to automagically include the correct .tex file from the corresponding folder.
+\def\ex{K4}
+
+% If the experiment is a variation (a, b), let me know here.
+\def\exvar{b}
+
+% What is the name of the experiment?
+\def\exname{Bestimmung von Geschwindigkeitskonstanten}
+
+% What type of protocol are you writing? This is used in the title and headers.
+\def\ptype{Versuchsprotokoll}
+
+% When was the experiment conducted? This is used in the title page.
+\def\exdate{TT. Monat JJJJ}
+
+% When is the deadline/submission date of the protocol? This is used in the title page.
+\def\deadline{TT. Monat JJJJ}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOCUMENT CONFIGURATION %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% First author.
+\def\firstauthor{John Doe}
+\def\firstauthorid{M.-Nr. ******}
+\def\firstauthoremail{john.doe@example.com}
+
+% Second author. If there is no second author, leave this empty.
+\def\secondauthor{}
+\def\secondauthorid{}
+\def\secondauthoremail{}
+
+% Your group identifier.
+\def\group{Gruppe X}
+
+% What is the name of the lab course?
+\def\lab{Praktikum Physikalische Chemie}
+% What is the short name of the lab course? This is used in the headers.
+\def\labshort{PCP}
+% In which semester is the course?
+\def\semester{WiSe YY/YY}
+% Are you studying Vollfach (VF) or Lehramtsoption (LO)? This is used in the title and headers.
+\def\labtype{Vollfach}
+% Short version
+\def\labtypeshort{VF}
+
+% Changes below this line should not be necessary, but you can change them if you know what you are doing.
+\usepackage{assets/styles/main}
+
+% My local environment does not support globbing for bib resources, so I have to add them manually.
+% However, on Overleaf, globbing works.
+%\addbibresource[glob=true]{**/*.bib}
+\addbibresource{E3/e3.bib}
+\addbibresource{E4/e4.bib}
+\addbibresource{K1/k1.bib}
+\addbibresource{K2/k2.bib}
+\addbibresource{K3/k3.bib}
+\addbibresource{K4/k4.bib}
+\addbibresource{Qu/qu.bib}
+\addbibresource{T1/t1.bib}
+\addbibresource{T2/t2.bib}
+\addbibresource{T3/t3.bib}
+
+\author{\firstauthor\ifx\secondauthor\empty\else, \secondauthor\fi}
+\title{\lab (\labtypeshort): \ptype: \experiment}
+
+\def\experiment{\ex\ifx\exvar\empty\else\exvar\fi: \textbf{\exname}}
+
+% Set PDF metadata using the title and author defined above.
+\makeatletter
+\AtBeginDocument{%
+    \hypersetup{%
+        pdftitle={\@title},%
+        pdfauthor={\@author},%
+    }%
+}
+\makeatother
+
+\ExplSyntaxOn
+\cs_new:Npn \makelower #1 {
+    \text_lowercase:n {#1}
+}
+\ExplSyntaxOff
+\edef\exl{\makelower{\ex}} % Lowercase version of the experiment identifier, used for file paths.
+
+\begin{document}
+\singlespacing
+\pagenumbering{gobble}
+\begin{titlepage}
+    \begin{center}
+    \vspace*{5cm}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\textwidth]{assets/imgs/UniBremen_Logo_Rot-Schwarz_Web_NICHT_VERAENDERN.png}
+    \end{figure}
+    \vspace{1cm}
+    \Large{\textbf{\lab}} \\
+        \large{\textbf{--- \labtype{} ---}} \\
+    \vspace*{2\baselineskip}
+    \large{\ptype}\\
+    \vspace*{\baselineskip}
+    \large{\experiment} \\
+    \end{center}
+    \vspace*{\fill}
+    Durchgeführt am \exdate \\
+    Erstabgabe am \deadline \\
+    \vspace*{\baselineskip} \\
+    Verfasst von \\
+    \group{} \\
+    \firstauthor, \firstauthorid{}, \texttt{\firstauthoremail} \\
+    \ifx\secondauthor\empty \else
+        \secondauthor, \secondauthorid{}, \texttt{\secondauthoremail} \\
+    \fi
+\end{titlepage}
+\clearpage 
+
+\pagenumbering{arabic}
+\onehalfspacing
+
+\input{\ex/\exl.tex}
+\end{document}

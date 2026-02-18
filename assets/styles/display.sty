@@ -1,0 +1,79 @@
+\ProvidesPackage{assets/styles/display}
+
+\usepackage{minted}
+
+% Wurzelzeichen geschlossen, für bessere Lesbarkeit.
+\usepackage{letltxmacro}
+\makeatletter
+\let\oldr@@t\r@@t
+\def\r@@t#1#2{%
+    \setbox0=\hbox{$\oldr@@t#1{#2\,}$}\dimen0=\ht0
+    \advance\dimen0 by -0.2\ht0
+    \setbox2=\hbox{\vrule height\ht0 depth -\dimen0}{\box0\lower0.4pt\box2}
+}
+\LetLtxMacro{\oldsqrt}{\sqrt}
+\renewcommand*{\sqrt}[2][\ ]{\oldsqrt[#1]{#2}}
+\makeatother
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+% Hübsche "Kisten"
+\usepackage[svgnames,dvipsnames]{xcolor}
+\usepackage{mdframed}
+
+\mdfdefinestyle{mdfgreenbox}{%
+	skipabove=8pt,
+	linewidth=2pt,
+	rightline=false,
+	leftline=true,
+	topline=false,
+	bottomline=false,
+	linecolor=ForestGreen,
+	backgroundcolor=ForestGreen!5,
+}
+\newenvironment{greenbox}[1][]{%
+    \ignorespaces%
+    \begin{mdframed}[style=mdfgreenbox,#1]%
+}{%
+    \end{mdframed}%
+    \ignorespacesafterend%
+}%
+
+\mdfdefinestyle{mdfredbox}{%
+	skipabove=8pt,
+	linewidth=2pt,
+	rightline=false,
+	leftline=true,
+	topline=false,
+	bottomline=false,
+	linecolor=RawSienna,
+	backgroundcolor=Salmon!5,
+}
+\newenvironment{redbox}[1][]{%
+    \ignorespaces%
+    \begin{mdframed}[style=mdfredbox,#1]%
+}{%
+    \end{mdframed}%
+    \ignorespacesafterend%
+}%
+
+\mdfdefinestyle{mdfbluebox}{%
+	skipabove=8pt,
+	linewidth=2pt,
+	rightline=false,
+	leftline=true,
+	topline=false,
+	bottomline=false,
+	linecolor=blue,
+	backgroundcolor=TealBlue!5,
+}
+\newenvironment{bluebox}[1][]{%
+    \ignorespaces%
+    \begin{mdframed}[style=mdfbluebox,#1]%
+}{%
+    \end{mdframed}%
+    \ignorespacesafterend%
+}%
+

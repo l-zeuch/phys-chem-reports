@@ -1,0 +1,17 @@
+\ProvidesPackage{assets/styles/headers}
+
+% Header setup
+\usepackage[%
+headsepline=true,
+footsepline=true]{scrlayer-scrpage}
+% no italics here
+\setkomafont{pageheadfoot}{\upshape}
+\rofoot{Seite \pagemark}
+
+% In single-side printing, LaTeX designates all pages as odd pages.
+\cofoot{\firstauthor\ifx\secondauthor\empty\else, \secondauthor\fi}
+\cohead{\ptype}
+\lofoot{\group}
+\lohead{\labshort \semester}
+\rohead{\ex\ifx\exvar\empty\else\exvar\fi}
+

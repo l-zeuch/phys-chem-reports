@@ -1,0 +1,62 @@
+\ProvidesPackage{assets/styles/main}
+
+% HACK: https://github.com/schlcht/microtype/issues/53
+\usepackage{silence}
+\WarningFilter{latex}{Command \showhyphens has changed.}
+
+% Bibtex
+\usepackage{csquotes}
+\usepackage[%
+  backend = biber,
+  style = chem-acs,
+  articletitle = true,
+  url = true,
+  chaptertitle = true,
+]{biblatex}
+
+\usepackage{booktabs}
+\usepackage{pdfpages}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{derivative}
+\usepackage{fixdif}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{physics2}
+\usepackage{setspace}
+\usepackage[%
+    separate-uncertainty=true,
+    mode=match,
+]{siunitx}
+\sisetup{exponent-product = \cdot, output-product = \cdot}
+\usepackage{subcaption}
+\usepackage{mleftright}
+
+% Chemie
+\usepackage{upgreek}
+\usepackage{chemformula}
+\usepackage{chemfig}
+\usepackage{chemmacros}
+\NewChemReaction{multreaction}{multline}
+\chemsetup{greek=upgreek}
+
+\ExplSyntaxOn
+\cs_new:Npn \chemmacros_load_module:n #1 {}
+\ExplSyntaxOff
+\usepackage{ghsystem}
+\usepackage{stackengine}
+\usepackage{adjustbox}
+
+\newcommand{\warning}{{\color{red}{\textbf{ACHTUNG}}}}
+\newcommand{\danger}{{\color{red}{\textbf{GEFAHR}}}}
+
+\usepackage{assets/styles/display}
+\usepackage{assets/styles/fonts}
+\usepackage{assets/styles/headers}
+\usepackage{assets/styles/hyphenation}
+
+% hyperref should be loaded as late as possible, so we put it here.
+\usepackage{hyperref}
+

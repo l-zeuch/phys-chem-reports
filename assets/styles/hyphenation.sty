@@ -1,0 +1,28 @@
+\ProvidesPackage{assets/styles/hyphenation}
+
+% This file contains custom hyphenation rules for LaTeX documents.
+\usepackage{hyphenat}
+
+% TECHNICAL BACKGROUND
+% When LaTeX encounters the end of a line, it first tries its best to properly fill that line. Read on kerning and font expansion as well as Knuth's algorithm if you care about that.
+% If it cannot do that without absolutely disgusting results, it hyphenates the word.
+% Now, if LaTeX cannot find any rules about how to hyphenate said word, it just gives up and doesn't, and/or guesses based on some other fancy pants code where a hyphen *probably* goes.
+% This usually results in that insanely annoying "overfull hbox" warning.
+% Microtype (which is also included in this document's preamble) can already do a lot of magic. And I mean magic.
+% However, in really rare circumstances, even that might not work out, though much less and much smaller overfull, something like 2-7 pixels.
+% Barely noticeable, still quite an annoying warning.
+% Although the base dictionaries have a lot of hyphenation already present, some rare, or specialised words may not exist in there.
+
+% Of course, one could always use the in-text notation of hy\-phe\-na\-tion, but that tends to become really annoying when you're using it a bunch of times.
+% Or if it's a long word, like su\-per\-ca\-li\-fra\-gil\-is\-tic\-ex\-pi\-a\-li\-do\-ci\-ous, even if only repeated one or two times.
+
+% USAGE
+% To add a new hyphenation rule, add it to the below list, ideally (for search efficiency) alphabetically sorted.
+% A good initial baseline is to use the general rules of hyphenation (i.e. syllables), however, for readability, you may wish to do it differently.
+% LaTeX doesn't care and so long it makes somewhat sense, nobody who'll read your document will notice.
+% Now you know why we always clapped in school when saying words :-) That's what that was for, you are welcome.
+\hyphenation{Ba\-sis\-sätze}
+\hyphenation{Cy\-clo\-volt\-am\-metrie}
+\hyphenation{Ge\-ome\-trie\-Drei\-eck}
+\hyphenation{Pseu\-do\-po\-ten\-tial-Ba\-sis\-sätze}
+\hyphenation{re\-la\-ti\-vis\-tisch}
