@@ -1,3 +1,5 @@
+*.pdf
+
 .latexmk/
 .venv/
 _minted/
