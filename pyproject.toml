@@ -1,12 +1,12 @@
 [project]
+name = "phys-chem-reports"
 dependencies = [
     "matplotlib",
     "numpy",
 ]
+version = "0.1.0"
 
 [tool.pyright]
 venvPath = '.'
 venv = '.venv'
 exclude = ['.venv']
-
-
