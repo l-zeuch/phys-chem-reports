@@ -8,11 +8,14 @@
 % This is used in the title, headers, and to automagically include the correct .tex file from the corresponding folder.
 \def\ex{K4}
 
-% If the experiment is a variation (a, b), let me know here.
+% If the experiment is a variation (a, b), let me know here. Otherwise leave this empty.
 \def\exvar{b}
 
 % What is the name of the experiment?
 \def\exname{Bestimmung von Geschwindigkeitskonstanten}
+
+% Subtitle of the experiment when it is a variation.
+\def\exsubtitle{Die Auflösungsgeschwindigkeit eines Salzes}
 
 % What type of protocol are you writing? This is used in the title and headers.
 \def\ptype{Versuchsprotokoll}
@@ -107,6 +110,7 @@
     \large{\ptype}\\
     \vspace*{\baselineskip}
     \large{\experiment} \\
+    \ifx\exsubtitle\empty\else\exsubtitle\fi
     \end{center}
     \vspace*{\fill}
     Durchgeführt am \exdate \\
