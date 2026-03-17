@@ -38,7 +38,11 @@ def main():
         ),
         formatter_class=argparse.RawTextHelpFormatter,
     )
-    parser.add_argument("scanrate", type=str, help='Scanrate to plot (numeric part, e.g. "100" for 100 mVs).')
+    parser.add_argument(
+        "scanrate",
+        type=str,
+        help='Scanrate to plot (numeric part, e.g. "100" for 100 mVs).',
+    )
     parser.add_argument(
         "--stirred",
         action="store_true",
@@ -98,9 +102,11 @@ def render_report(scanrate: str, stirred: bool, extremas, peaks, fits) -> str:
         print_fit_report(fits)
     return buf.getvalue()
 
+
 # --------------------------------------------------------------------------- #
 # Data classes
 # --------------------------------------------------------------------------- #
+
 
 @dataclass
 class RunExtrema:
@@ -173,6 +179,7 @@ class PlotContext:
 # IO helpers
 # --------------------------------------------------------------------------- #
 
+
 def load_file(name: str, stirred: bool = False) -> Tuple[List[float], List[float]]:
     fname = _make_fname(name, stirred)
     return _read_csv(fname)
@@ -204,6 +211,7 @@ def _read_csv(fname: str) -> Tuple[List[float], List[float]]:
 # Stats helpers
 # --------------------------------------------------------------------------- #
 
+
 def _sem(data: Sequence[float]) -> float:
     """Return standard error of the mean (s / sqrt(n)). 0.0 for n <= 1."""
     n = len(data)
@@ -212,7 +220,9 @@ def _sem(data: Sequence[float]) -> float:
     return statistics.stdev(data) / math.sqrt(n)
 
 
-def find_runs(potentials: Sequence, currents: Sequence) -> Tuple[List[List[float]], List[List[float]]]:
+def find_runs(
+    potentials: Sequence, currents: Sequence
+) -> Tuple[List[List[float]], List[List[float]]]:
     """Split potentials/currents into runs based on potential crossing zero (with smoothing + min separation)."""
     pot_arr = np.asarray(potentials, dtype=float)
     n = len(pot_arr)
@@ -253,7 +263,9 @@ def _apply_splits(lst: Sequence, splits: List[Tuple[int, int]]) -> List[List]:
     return [list(lst[start:end]) for (start, end) in splits]
 
 
-def compute_extrema_stats(runs_potentials: List[List[float]], runs_currents: List[List[float]]) -> ExtremaStats:
+def compute_extrema_stats(
+    runs_potentials: List[List[float]], runs_currents: List[List[float]]
+) -> ExtremaStats:
     """Compute per-run maxima/minima and their potentials, plus averages and SEM."""
     runs_data: List[RunExtrema] = []
     for pot_run, cur_run in zip(runs_potentials, runs_currents):
@@ -294,6 +306,7 @@ def compute_extrema_stats(runs_potentials: List[List[float]], runs_currents: Lis
 # --------------------------------------------------------------------------- #
 # Linear fits
 # --------------------------------------------------------------------------- #
+
 
 def compute_linear_fits(
     runs_potentials: List[List[float]], runs_currents: List[List[float]]
@@ -381,7 +394,10 @@ def _fit_linear_window(
 # Peak analysis (background-corrected peaks with error propagation)
 # --------------------------------------------------------------------------- #
 
-def analyze_peaks(extremas: ExtremaStats, fits: Dict[str, FitWindowResult]) -> PeakAnalysis:
+
+def analyze_peaks(
+    extremas: ExtremaStats, fits: Dict[str, FitWindowResult]
+) -> PeakAnalysis:
     out = PeakAnalysis(
         i_pa_raw=extremas.avg_max_current,
         i_pc_raw=extremas.avg_min_current,
@@ -402,7 +418,12 @@ def analyze_peaks(extremas: ExtremaStats, fits: Dict[str, FitWindowResult]) -> P
 
     # Forward (anodic) peak vs forward fit
     fwd = fits.get("forward")
-    if fwd and fwd.avg.slope is not None and fwd.avg.intercept is not None and out.i_pa_raw is not None:
+    if (
+        fwd
+        and fwd.avg.slope is not None
+        and fwd.avg.intercept is not None
+        and out.i_pa_raw is not None
+    ):
         m = fwd.avg.slope
         b = fwd.avg.intercept
         sigma_m = fwd.avg.slope_sem or 0.0
@@ -412,12 +433,22 @@ def analyze_peaks(extremas: ExtremaStats, fits: Dict[str, FitWindowResult]) -> P
         out.fit_at_pa = fit_pa
         diff_pa = out.i_pa_raw - fit_pa
         out.i_pa_bg = float(np.abs(diff_pa))
-        var_pa = (sigma_I_pa ** 2) + (x_pa * sigma_m) ** 2 + (m * sigma_x_pa) ** 2 + (sigma_b ** 2)
+        var_pa = (
+            (sigma_I_pa**2)
+            + (x_pa * sigma_m) ** 2
+            + (m * sigma_x_pa) ** 2
+            + (sigma_b**2)
+        )
         out.i_pa_bg_err = float(np.sqrt(var_pa)) if var_pa > 0 else 0.0
 
     # Reverse (cathodic) peak vs reverse fit
     rev = fits.get("reverse")
-    if rev and rev.avg.slope is not None and rev.avg.intercept is not None and out.i_pc_raw is not None:
+    if (
+        rev
+        and rev.avg.slope is not None
+        and rev.avg.intercept is not None
+        and out.i_pc_raw is not None
+    ):
         m = rev.avg.slope
         b = rev.avg.intercept
         sigma_m = rev.avg.slope_sem or 0.0
@@ -427,16 +458,28 @@ def analyze_peaks(extremas: ExtremaStats, fits: Dict[str, FitWindowResult]) -> P
         out.fit_at_pc = fit_pc
         diff_pc = out.i_pc_raw - fit_pc
         out.i_pc_bg = float(np.abs(diff_pc))
-        var_pc = (sigma_I_pc ** 2) + (x_pc * sigma_m) ** 2 + (m * sigma_x_pc) ** 2 + (sigma_b ** 2)
+        var_pc = (
+            (sigma_I_pc**2)
+            + (x_pc * sigma_m) ** 2
+            + (m * sigma_x_pc) ** 2
+            + (sigma_b**2)
+        )
         out.i_pc_bg_err = float(np.sqrt(var_pc)) if var_pc > 0 else 0.0
 
     # Ratio of background-corrected peaks
     ipa, ipc = out.i_pa_bg, out.i_pc_bg
     ipa_err, ipc_err = out.i_pa_bg_err, out.i_pc_bg_err
-    if ipa not in (None, 0) and ipc not in (None, 0) and ipa_err is not None and ipc_err is not None:
+    if (
+        ipa not in (None, 0)
+        and ipc not in (None, 0)
+        and ipa_err is not None
+        and ipc_err is not None
+    ):
         out.ratio_bg = ipa / ipc
         rel_var = (ipa_err / ipa) ** 2 + (ipc_err / ipc) ** 2
-        out.ratio_bg_err = float(np.sqrt(rel_var)) * out.ratio_bg if rel_var > 0 else 0.0
+        out.ratio_bg_err = (
+            float(np.sqrt(rel_var)) * out.ratio_bg if rel_var > 0 else 0.0
+        )
 
     return out
 
@@ -444,6 +487,7 @@ def analyze_peaks(extremas: ExtremaStats, fits: Dict[str, FitWindowResult]) -> P
 # --------------------------------------------------------------------------- #
 # Reports
 # --------------------------------------------------------------------------- #
+
 
 def print_extrema_report(extremas: ExtremaStats) -> None:
     """Print per-run extrema and the averaged value with SEM."""
@@ -482,7 +526,9 @@ def print_fit_report(fits: Dict[str, FitWindowResult]) -> None:
             if m is None:
                 print(f"  Run {i}: insufficient points in window")
             else:
-                print(f"  Run {i}: slope = {m:.4f} µA/mV, intercept = {b:.4f} µA, R² = {r2:.4f}")
+                print(
+                    f"  Run {i}: slope = {m:.4f} µA/mV, intercept = {b:.4f} µA, R² = {r2:.4f}"
+                )
         avg = info.avg
         if avg.slope is not None:
             sem_m = avg.slope_sem or 0.0
@@ -495,7 +541,9 @@ def print_fit_report(fits: Dict[str, FitWindowResult]) -> None:
             print("  Avg: no data")
 
 
-def print_analysis_report(scanrate: str, extremas: ExtremaStats, peaks: PeakAnalysis) -> None:
+def print_analysis_report(
+    scanrate: str, extremas: ExtremaStats, peaks: PeakAnalysis
+) -> None:
     max_pot = extremas.avg_max_pot
     min_pot = extremas.avg_min_pot
     pot_diff = max_pot - min_pot
@@ -510,16 +558,18 @@ def print_analysis_report(scanrate: str, extremas: ExtremaStats, peaks: PeakAnal
 
     print("\n=== Analysis Report ===")
     print(f"  Scanrate: {scanrate} mV/s")
-    print(f"  Max current potential (anodic): {max_pot:.2f} ± {extremas.err_avg_max_pot:.2f} mV")
-    print(f"  Min current potential (cathodic): {min_pot:.2f} ± {extremas.err_avg_min_pot:.2f} mV")
+    print(
+        f"  Max current potential (anodic): {max_pot:.2f} ± {extremas.err_avg_max_pot:.2f} mV"
+    )
+    print(
+        f"  Min current potential (cathodic): {min_pot:.2f} ± {extremas.err_avg_min_pot:.2f} mV"
+    )
     print(
         f"  ΔE (max - min): {pot_diff:.2f} ± "
         f"{extremas.err_avg_max_pot + extremas.err_avg_min_pot:.2f} mV"
     )
     if halfway is not None:
-        print(
-            f"  Halfway potential: {halfway:.2f} ± {extremas.err_halfway_pot:.2f} mV"
-        )
+        print(f"  Halfway potential: {halfway:.2f} ± {extremas.err_halfway_pot:.2f} mV")
 
     if ipa is not None:
         if ipa_err is not None:
@@ -544,6 +594,7 @@ def print_analysis_report(scanrate: str, extremas: ExtremaStats, peaks: PeakAnal
 # Plotting
 # --------------------------------------------------------------------------- #
 
+
 def plot_data(ctx: PlotContext) -> None:
     """Plot runs, annotate averages, and overlay average linear fits with SEM bands."""
     potentials = ctx.potentials
@@ -560,8 +611,8 @@ def plot_data(ctx: PlotContext) -> None:
 
     # annotate average extrema (maximum) with error bars
     pyplot.annotate(
-        f'Max Current: ({extremas.avg_max_current:.2f} ± {extremas.err_avg_max_current:.2f}) µA\n'
-        f'at ({extremas.avg_max_pot:.2f} ± {extremas.err_avg_max_pot:.2f}) mV',
+        f"Max Current: ({extremas.avg_max_current:.2f} ± {extremas.err_avg_max_current:.2f}) µA\n"
+        f"at ({extremas.avg_max_pot:.2f} ± {extremas.err_avg_max_pot:.2f}) mV",
         xy=(extremas.avg_max_pot, extremas.avg_max_current),
         xytext=(extremas.avg_max_pot + 20, extremas.avg_max_current),
         fontsize=8,
@@ -576,8 +627,8 @@ def plot_data(ctx: PlotContext) -> None:
 
     # annotate average extrema (minimum) with error bars
     pyplot.annotate(
-        f'Min Current: ({extremas.avg_min_current:.2f} ± {extremas.err_avg_min_current:.2f}) µA\n'
-        f'at ({extremas.avg_min_pot:.2f} ± {extremas.err_avg_min_pot:.2f}) mV',
+        f"Min Current: ({extremas.avg_min_current:.2f} ± {extremas.err_avg_min_current:.2f}) µA\n"
+        f"at ({extremas.avg_min_pot:.2f} ± {extremas.err_avg_min_pot:.2f}) mV",
         xy=(extremas.avg_min_pot, extremas.avg_min_current),
         xytext=(extremas.avg_min_pot - 160, extremas.avg_min_current),
         fontsize=8,
@@ -605,11 +656,22 @@ def plot_data(ctx: PlotContext) -> None:
         xfit = np.linspace(min(x_start, x_end), max(x_start, x_end), 50)
         yfit = avg.slope * xfit + avg.intercept
         base_color = colors.get(wname, "k")
-        pyplot.plot(xfit, yfit, "--", color=base_color, linewidth=1.5, label=f"Avg Fit: {wname} ± SEM\n y = ({avg.slope:.4f} ± {avg.slope_sem:.4f})x + ({avg.intercept:.4f} ± {avg.intercept_sem:.4f})")
+        pyplot.plot(
+            xfit,
+            yfit,
+            "--",
+            color=base_color,
+            linewidth=1.5,
+            label=f"Avg Fit: {wname} ± SEM\n y = ({avg.slope:.4f} ± {avg.slope_sem:.4f})x + ({avg.intercept:.4f} ± {avg.intercept_sem:.4f})",
+        )
         # ±SEM bands
         if avg.slope_sem is not None and avg.intercept_sem is not None:
-            y_hi = (avg.slope + avg.slope_sem) * xfit + (avg.intercept + avg.intercept_sem)
-            y_lo = (avg.slope - avg.slope_sem) * xfit + (avg.intercept - avg.intercept_sem)
+            y_hi = (avg.slope + avg.slope_sem) * xfit + (
+                avg.intercept + avg.intercept_sem
+            )
+            y_lo = (avg.slope - avg.slope_sem) * xfit + (
+                avg.intercept - avg.intercept_sem
+            )
             pyplot.plot(xfit, y_hi, ":", color=base_color, alpha=0.45, linewidth=1.0)
             pyplot.plot(xfit, y_lo, ":", color=base_color, alpha=0.45, linewidth=1.0)
 
@@ -622,7 +684,9 @@ def plot_data(ctx: PlotContext) -> None:
         y_peak_pa = extremas.avg_max_current
         diff_pa = peaks.i_pa_bg
         diff_pa_err = peaks.i_pa_bg_err
-        pyplot.plot([x_pa, x_pa], [y_fit_pa, y_peak_pa], color="gray", linewidth=2, alpha=0.7)
+        pyplot.plot(
+            [x_pa, x_pa], [y_fit_pa, y_peak_pa], color="gray", linewidth=2, alpha=0.7
+        )
         if diff_pa is not None and diff_pa_err is not None:
             pyplot.annotate(
                 f"i_pa = ({diff_pa:.3f} ± {diff_pa_err:.3f}) µA",
@@ -641,7 +705,9 @@ def plot_data(ctx: PlotContext) -> None:
         y_peak_pc = extremas.avg_min_current
         diff_pc = peaks.i_pc_bg
         diff_pc_err = peaks.i_pc_bg_err
-        pyplot.plot([x_pc, x_pc], [y_fit_pc, y_peak_pc], color="brown", linewidth=2, alpha=0.7)
+        pyplot.plot(
+            [x_pc, x_pc], [y_fit_pc, y_peak_pc], color="brown", linewidth=2, alpha=0.7
+        )
         if diff_pc is not None and diff_pc_err is not None:
             pyplot.annotate(
                 f"i_pc = ({diff_pc:.3f} ± {diff_pc_err:.3f}) µA",
@@ -658,7 +724,7 @@ def plot_data(ctx: PlotContext) -> None:
     pyplot.annotate(
         f"Halfway Potential: ({halfway_pot:.2f} ± {extremas.err_halfway_pot:.2f}) mV",
         xy=(halfway_pot, extremas.avg_max_current * 0.5),
-        xytext=(halfway_pot * 0.5, extremas.avg_max_current * (2/3)),
+        xytext=(halfway_pot * 0.5, extremas.avg_max_current * (2 / 3)),
         fontsize=8,
         color="green",
         arrowprops=dict(arrowstyle="->", color="green", lw=0.8),

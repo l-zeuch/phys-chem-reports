@@ -10,11 +10,22 @@ from matplotlib import pyplot
 PATH_PREFIX = "K2/data/"
 CUTOFF_NM = 220.0
 
+
 def main():
-    parser = argparse.ArgumentParser(description="Plot spectra (single-pass or multi-pass).")
-    parser.add_argument("-f", "--file", default="water", help="Base filename (without .csv) in data/")
-    parser.add_argument("--multi", action="store_true", help="Treat file as multi-pass data.")
-    parser.add_argument("--time", action="store_true", help="Plot the time-dependant extinction at a single wavelength.")
+    parser = argparse.ArgumentParser(
+        description="Plot spectra (single-pass or multi-pass)."
+    )
+    parser.add_argument(
+        "-f", "--file", default="water", help="Base filename (without .csv) in data/"
+    )
+    parser.add_argument(
+        "--multi", action="store_true", help="Treat file as multi-pass data."
+    )
+    parser.add_argument(
+        "--time",
+        action="store_true",
+        help="Plot the time-dependant extinction at a single wavelength.",
+    )
     args = parser.parse_args()
 
     if args.multi:
@@ -87,10 +98,10 @@ def _denoise(absorbances: List[float], window_size: int = 11) -> List[float]:
     """Simple moving average denoising."""
     abs_array = np.asarray(absorbances)
     kernel = np.ones(window_size) / window_size
-    denoised = np.convolve(abs_array, kernel, mode='same')
+    denoised = np.convolve(abs_array, kernel, mode="same")
     # remove first and last few points which are less reliable
-    denoised[:window_size//2] = abs_array[:window_size//2]
-    denoised[-(window_size//2):] = abs_array[-(window_size//2):]
+    denoised[: window_size // 2] = abs_array[: window_size // 2]
+    denoised[-(window_size // 2) :] = abs_array[-(window_size // 2) :]
     return denoised.tolist()
 
 
@@ -111,7 +122,9 @@ def plot_single(wavelengths: List[float], absorbances: List[float]) -> None:
     pyplot.xlabel("Wellenlänge (nm)")
     pyplot.ylabel("Extinktion")
     pyplot.tight_layout()
-    pyplot.axvline(617.0, color="red", linestyle="--", label="Maximum Malachitgrün (617 nm)")
+    pyplot.axvline(
+        617.0, color="red", linestyle="--", label="Maximum Malachitgrün (617 nm)"
+    )
     pyplot.grid(True)
     pyplot.legend()
     pyplot.show()
@@ -122,9 +135,15 @@ def plot_multi(wavelengths: List[float], absorbance_passes: List[List[float]]) -
         pyplot.plot(wavelengths, abs_values, label=f"{idx * 10} Minuten")
     pyplot.xlabel("Wellenlänge (nm)")
     pyplot.ylabel("Extinktion")
-    pyplot.axvline(279.0, color="gray", linestyle="--", label="Isosbestischer Punkt (279 nm)")
-    pyplot.axvline(617.0, color="k", linestyle="--", label="Maximum Malachitgrün (617 nm)")
-    pyplot.axvline(253.0, color="b", linestyle="--", label="Maximum Malachitgrün-Carbinol (253 nm)")
+    pyplot.axvline(
+        279.0, color="gray", linestyle="--", label="Isosbestischer Punkt (279 nm)"
+    )
+    pyplot.axvline(
+        617.0, color="k", linestyle="--", label="Maximum Malachitgrün (617 nm)"
+    )
+    pyplot.axvline(
+        253.0, color="b", linestyle="--", label="Maximum Malachitgrün-Carbinol (253 nm)"
+    )
     pyplot.legend()
     pyplot.tight_layout()
     pyplot.grid(True)
